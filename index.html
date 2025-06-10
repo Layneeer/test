@@ -257,6 +257,34 @@
             margin: 0 !important;
         }
 
+        /* Scroll Down Arrow */
+        .scroll-down-arrow {
+            display: inline-block;
+            margin-top: 50px; /* Space from the button */
+            font-size: 3em; /* Large arrow */
+            color: white; /* White color */
+            text-decoration: none;
+            animation: bounce 2s infinite; /* Animation for bouncing */
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Shadow for readability */
+            transition: transform 0.2s ease, color 0.3s ease; /* Dodano przejście dla koloru */
+        }
+        .scroll-down-arrow:hover {
+            transform: translateY(5px); /* Slightly move down on hover */
+            text-decoration: none; /* No underline on hover */
+            color: #28a745; /* Zmieniono na zielony po najechaniu */
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+
 
         /* Main Content Container */
         .container {
@@ -519,8 +547,8 @@
             display: block;
         }
 
-        /* Project Configurator Styles */
-        #project-configurator {
+        /* Location Map Section Styles */
+        #location-section {
             background-color: #eaf0f8;
             padding: 40px;
             border-radius: 12px;
@@ -528,76 +556,54 @@
             text-align: center;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
-        #project-configurator h2 {
+        #location-section h2 {
             color: #007bff;
             margin-top: 0;
             margin-bottom: 30px;
         }
-        .configurator-controls {
+        #location-section .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (for responsive iframe) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
         }
-        .configurator-controls button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            margin: 5px;
-            border-radius: 30px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            font-family: 'Lato', sans-serif;
-            font-weight: 600;
-        }
-        .configurator-controls button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-        .configurator-controls button.active {
-            background-color: #28a745;
-            box-shadow: 0 3px 8px rgba(40, 167, 69, 0.3);
-        }
-        .configurator-display {
-            margin-top: 30px;
-        }
-        .configurator-image-container {
-            width: 100%;
-            max-width: 600px;
-            height: 350px;
-            background-color: #e0eafc;
-            margin: 20px auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #999999;
-            font-size: 1.3em;
-        }
-        .configurator-image-container img {
+        #location-section .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: opacity 0.5s ease-in-out;
+            border: 0;
+            border-radius: 10px; /* Match container border radius */
         }
-        .configurator-description {
-            margin-top: 20px;
-            padding: 15px 20px;
+        #location-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #34495e;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        #location-section ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 0;
+        }
+        #location-section ul li {
             background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            min-height: 100px;
-            text-align: left;
-            color: #4a4a4a;
-            font-size: 1em;
-            line-height: 1.6;
-        }
-        .configurator-description.loading {
-            background-color: #f0f0f0;
-            color: #888;
-            font-style: italic;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            font-size: 1.1em;
+            color: #555;
+            white-space: nowrap; /* Prevent text wrapping */
+            margin: 0; /* Override default list item margin */
         }
 
         /* --- Scroll Offset Compensation --- */
@@ -608,7 +614,7 @@
         #pricelist,
         #contact,
         #special-image-section,
-        #project-configurator {
+        #location-section { /* Zmieniono z project-configurator na location-section */
             scroll-margin-top: 90px; /* Adjust for desktop nav height */
         }
 
@@ -653,11 +659,11 @@
             #special-image-section .special-image {
                 height: 250px;
             }
-            #project-configurator {
+            #location-section { /* Zmieniono z project-configurator na location-section */
                 padding: 30px;
             }
-            .configurator-image-container {
-                height: 300px;
+            #location-section h3 {
+                font-size: 1.6em;
             }
 
             /* Tablet/Mobile specific navigation - hamburger menu */
@@ -759,15 +765,15 @@
             #special-image-section .special-image {
                 height: 200px;
             }
-            #project-configurator {
+            #location-section { /* Zmieniono z project-configurator na location-section */
                 padding: 20px;
             }
-            .configurator-image-container {
-                height: 250px;
+            #location-section h3 {
+                font-size: 1.4em;
             }
-            .configurator-controls button {
-                padding: 10px 20px;
+            #location-section ul li {
                 font-size: 1em;
+                padding: 8px 15px;
             }
             /* Tablet/Mobile specific navigation - hamburger menu */
             .main-nav .nav-links li {
@@ -787,7 +793,7 @@
             #pricelist,
             #contact,
             #special-image-section,
-            #project-configurator {
+            #location-section { /* Zmieniono z project-configurator na location-section */
                 scroll-margin-top: 60px; /* Adjust for smaller nav height */
             }
         }
@@ -851,15 +857,15 @@
             #special-image-section .special-image {
                 height: 160px;
             }
-            #project-configurator {
+            #location-section { /* Zmieniono z project-configurator na location-section */
                 padding: 15px;
             }
-            .configurator-image-container {
-                height: 200px;
+            #location-section h3 {
+                font-size: 1.2em;
             }
-            .configurator-controls button {
-                padding: 8px 15px;
+            #location-section ul li {
                 font-size: 0.9em;
+                padding: 6px 12px;
             }
             /* Tablet/Mobile specific navigation - hamburger menu */
             .main-nav .nav-links li {
@@ -878,7 +884,7 @@
             #pricelist,
             #contact,
             #special-image-section,
-            #project-configurator {
+            #location-section { /* Zmieniono z project-configurator na location-section */
                 scroll-margin-top: 50px; /* Adjust for smallest nav height */
             }
         }
@@ -901,7 +907,7 @@
             <li><a href="#indications">Realizacje</a></li>
             <li><a href="#pricelist">Cennik</a></li>
             <li><a href="#contact">Kontakt</a></li>
-            <li><a href="#project-configurator">Wizualizator</a></li>
+            <li><a href="#location-section">Lokalizacja</a></li> <!-- Zmieniono link -->
         </ul>
         <button class="hamburger-menu">
             <span class="bar"></span>
@@ -912,7 +918,8 @@
     <section id="hero-section">
         <div class="hero-subtitle-box"> <p>Profesjonalizm i doświadczenie w układaniu kostki brukowej.</p>
         </div>
-        <a href="#contact" class="action-button">KLIKNIJ PO DARMOWĄ WYCENĘ!</a>
+        <a href="#contact" class="action-button">Darmowa wycena!</a>
+        <a href="#what-are-cpm-rails" class="scroll-down-arrow">&darr;</a> <!-- Strzałka do przewijania -->
     </section>
 
     <div class="container">
@@ -921,7 +928,7 @@
         <section id="what-are-cpm-rails" class="hidden-section">
             <h2>Nasze Usługi Brukarskie</h2>
             <div class="image-placeholder">
-                <img src="https://placehold.co/700x350/e9ecef/888888?text=Ukladanie+Kostki" alt="Zdjęcie przedstawiające układanie kostki brukowej">
+                <img src="https://placehold.co/700x350/e9ecef/888888?text=[Image of Ukladanie Kostki]" alt="Zdjęcie przedstawiające układanie kostki brukowej">
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -932,7 +939,7 @@
         <section id="benefits" class="hidden-section">
             <h2>Dlaczego Wybrać Poz-bruk?</h2>
             <div class="image-placeholder">
-                <img src="https://placehold.co/700x350/e9ecef/888888?text=Jakosc+i+Doswiadczenie" alt="Ilustracja jakości i doświadczenia w brukarstwie">
+                <img src="https://placehold.co/700x350/e9ecef/888888?text=[Image of Jakosc i Doswiadczenie]" alt="Ilustracja jakości i doświadczenia w brukarstwie">
             </div>
             <ul>
                 <li><strong>Doświadczenie i Profesjonalizm:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -947,7 +954,7 @@
         <section id="indications" class="hidden-section">
             <h2>Nasze Realizacje</h2>
             <div class="image-placeholder">
-                <img src="https://placehold.co/700x350/e9ecef/888888?text=Gotowe+Projekty" alt="Galeria ukończonych projektów brukarskich">
+                <img src="https://placehold.co/700x350/e9ecef/888888?text=[Image of Gotowe Projekty]" alt="Galeria ukończonych projektów brukarskich">
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <ul>
@@ -1018,7 +1025,7 @@
         <section id="special-image-section" class="hidden-section">
             <h3>Zrealizuj swój projekt z Poz-bruk!</h3>
             <div class="special-image">
-                <img src="https://placehold.co/500x300/e0eafc/999999?text=Projekt+Twoich+Marzen" alt="Wizualizacja nowoczesnego podjazdu z kostki brukowej">
+                <img src="https://placehold.co/500x300/e0eafc/999999?text=[Image of Projekt Twoich Marzen]" alt="Wizualizacja nowoczesnego podjazdu z kostki brukowej">
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <a href="#contact" class="action-button">Poproś o wycenę</a>
@@ -1036,23 +1043,23 @@
         </section>
 
         <hr>
-        <section id="project-configurator" class="hidden-section">
-            <h2>Wizualizator Projektu Brukarskiego</h2>
-            <p>Wybierz rodzaj projektu, aby zobaczyć inspirujące zdjęcia i dowiedzieć się więcej!</p>
-            <div class="configurator-controls">
-                <button data-project="podjazd" class="active">Podjazd</button>
-                <button data-project="taras">Taras</button>
-                <button data-project="sciezka">Ścieżka</button>
-                <button data-project="murki">Murki Ogrodowe</button>
+        <!-- Zmieniono sekcję wizualizatora na sekcję mapy -->
+        <section id="location-section" class="hidden-section">
+            <h2>Nasza Lokalizacja</h2>
+            <p>Znajdź nas tutaj i sprawdź, czy dojeżdżamy do Twojej miejscowości!</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps?q=Mosina%2C+Orzeszkowej+5&z=16&output=embed" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <div class="configurator-display">
-                <div class="configurator-image-container">
-                    <img id="project-image" src="https://placehold.co/600x350/e0eafc/999999?text=Wybierz+Projekt" alt="Wizualizacja projektu">
-                </div>
-                <div id="project-description" class="configurator-description loading">
-                    Wybierz rodzaj projektu powyżej, aby zobaczyć inspiracje i przeczytać szczegółowy opis.
-                </div>
-            </div>
+            <h3>Dojeżdżamy do okolicznych miast:</h3>
+            <ul>
+                <li>Poznań</li>
+                <li>Luboń</li>
+                <li>Kórnik</li>
+                <li>Puszczykowo</li>
+                <li>Komorniki</li>
+                <li>Śrem</li>
+                <li>Stęszew</li>
+            </ul>
         </section>
 
         <footer>
@@ -1127,93 +1134,7 @@
             }
             // --- End Hamburger Menu Logic ---
 
-
-            // Project Configurator Logic
-            const projectButtons = document.querySelectorAll('.configurator-controls button');
-            const projectImage = document.getElementById('project-image');
-            const projectDescription = document.getElementById('project-description');
-
-            const projectData = {
-                podjazd: {
-                    image: "https://placehold.co/600x350/e0eafc/999999?text=Podjazd+Kostka",
-                    prompt: "Opisz projekt podjazdu z kostki brukowej, w tym zalety, materiały, styl i na co zwrócić uwagę przy realizacji. Tekst powinien być profesjonalny i zachęcający dla klienta firmy brukarskiej Poz-bruk, długość do 150 słów."
-                },
-                taras: {
-                    image: "https://placehold.co/600x350/e0eafc/999999?text=Taras+Kostka",
-                    prompt: "Opisz projekt tarasu z kostki brukowej, w tym zalety, możliwości aranżacyjne i na co zwrócić uwagę przy realizacji. Tekst powinien być profesjonalny i zachęcający dla klienta firmy brukarskiej Poz-bruk, długość do 150 słó."
-                },
-                sciezka: {
-                    image: "https://placehold.co/600x350/e0eafc/999999?text=Sciezka+Kostka",
-                    prompt: "Opisz projekt ścieżki ogrodowej z kostki brukowej, w tym zalety, funkcjonalność, estetykę i na co zwrócić uwagę przy realizacji. Tekst powinien być profesjonalny i zachęcający dla klienta firmy brukarskiej Poz-bruk, długość do 150 słów."
-                },
-                murki: {
-                    image: "https://placehold.co/600x350/e0eafc/999999?text=Murki+Ogrodowe",
-                    prompt: "Opisz projekt murków ogrodowych z kostki brukowej, w tym ich zastosowania, estetykę i na co zwrócić uwagę przy realizacji. Tekst powinien być profesjonalny i zachęcający dla klienta firmy brukarskiej Poz-bruk, długość do 150 słów."
-                }
-            };
-
-            const fetchProjectDescription = async (projectType) => {
-                projectDescription.classList.add('loading');
-                projectDescription.innerHTML = 'Ładuję opis... Proszę czekać.'; // Loading indicator
-
-                let chatHistory = [];
-                chatHistory.push({ role: "user", parts: [{ text: projectData[projectType].prompt }] });
-
-                const payload = { contents: chatHistory };
-                const apiKey = ""; // Canvas will automatically provide the API key
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const result = await response.json();
-
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        projectDescription.innerHTML = text;
-                    } else {
-                        projectDescription.innerHTML = "Nie udało się załadować opisu. Spróbuj ponownie.";
-                        console.error("Unexpected API response structure:", result);
-                    }
-                } catch (error) {
-                    projectDescription.innerHTML = "Wystąpił błąd podczas ładowania opisu.";
-                    console.error("Error fetching description:", error);
-                } finally {
-                    projectDescription.classList.remove('loading');
-                }
-            };
-
-            const updateProjectDisplay = (projectType) => {
-                // Update image
-                projectImage.style.opacity = 0; // Fade out current image
-                setTimeout(() => {
-                    projectImage.src = projectData[projectType].image;
-                    projectImage.alt = `Przykładowy projekt: ${projectType}`;
-                    projectImage.style.opacity = 1; // Fade in new image
-                }, 200); // Wait for fade-out
-
-                // Fetch and update description
-                fetchProjectDescription(projectType);
-            };
-
-            projectButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    projectButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    button.classList.add('active');
-                    // Update display based on data-project attribute
-                    updateProjectDisplay(button.dataset.project);
-                });
-            });
-
-            // Initialize with the first project type
-            updateProjectDisplay('podjazd');
+            // No need for Project Configurator JS anymore as it's replaced
         });
     </script>
 
