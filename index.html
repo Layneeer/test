@@ -33,7 +33,7 @@
             height: 100vh; /* Full viewport height */
             overflow: hidden; /* Hide any overflow of the image itself */
             z-index: -2; /* Send it to the very back, behind content and hero section */
-            background-image: url('wizytowka.png'); /* Obrazek tła wizytówki */
+            background-image: url('tlo.png'); /* Obrazek tła wizytówki */
             background-size: cover; /* Pokryj cały kontener */
             background-position: center; /* Wyśrodkuj obraz */
             background-repeat: no-repeat; /* Zapobiegaj powtarzaniu */
@@ -50,6 +50,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000; /* High z-index to be above content */
             display: flex;
+            justify-content: space-between; /* Rozłóż elementy na boki */
             align-items: center;
             padding: 10px 20px; /* Zwiększono padding poziomy dla lepszego dopasowania */
             height: 90px; /* Fixed height for consistent spacing, adjusted for larger logo */
@@ -113,7 +114,7 @@
         .hamburger-menu {
             display: none; /* Ukryte domyślnie na desktopie */
             flex-direction: row; /* Kreski i tekst w jednej linii */
-            justify-content: space-around;
+            justify-content: flex-start; /* Ułóż elementy od lewej */
             align-items: center; /* Wyśrodkuj pionowo */
             width: auto; /* Szerokość dopasowana do zawartości */
             height: 25px; /* Wysokość dla kresek */
@@ -122,7 +123,6 @@
             cursor: pointer;
             padding: 0;
             z-index: 1001; /* Above nav links when active */
-            margin-left: 20px; /* Odstęp od menu */
         }
 
         .hamburger-menu .bar {
@@ -148,7 +148,7 @@
         /* Hero Section (the large image that fades) */
         #hero-section {
             height: 70vh; /* Initial height for the hero image */
-            background-image: url('tlo.png'); /* Używa obrazu wizytówki w sekcji hero */
+            background-image: url('wizytowka.png'); /* Używa obrazu wizytówki w sekcji hero */
             background-size: cover;
             background-position: center;
             position: relative; /* Allows z-index for content above it */
@@ -192,19 +192,21 @@
             background-color: #28a745; /* Zmieniono na zielony */
             box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Zmieniono na zielony cień */
             margin-top: 0; /* Adjusted margin, controlled by hero-subtitle-box */
-            text-decoration: none; /* Explicitly remove default underline */
-            position: relative; /* Potrzebne, jeśli w przyszłości będzie ::after */
-        }
-        /* Specyficzna zasada, aby wyłączyć ::after dla tego przycisku, jeśli by się pojawiał */
-        #hero-section .action-button::after {
-            content: none; /* Usuń pseudo-element */
+            text-decoration: none !important; /* Explicitly remove any underline on hover/active */
+            position: relative;
         }
 
         #hero-section .action-button:hover {
             background-color: #218838; /* Ciemniejszy zielony na hover */
             transform: translateY(-3px);
             box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
+            text-decoration: none !important; /* Zapewnij brak podkreślenia */
         }
+        /* Usunięcie ::after dla tego konkretnego przycisku, aby nie było niebieskiej kreski */
+        #hero-section .action-button::after {
+            content: none !important;
+        }
+
 
         /* Main Content Container */
         .container {
@@ -317,7 +319,7 @@
         }
 
         /* Buttons and Links (General - not hero button) */
-        .action-button {
+        .action-button { /* To jest ogólny styl dla buttonów */
             display: inline-block;
             background-color: #007bff; /* Default blue for other buttons */
             color: #ffffff;
@@ -335,6 +337,7 @@
             background-color: #0056b3;
             transform: translateY(-3px);
             box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
+            text-decoration: none !important; /* Zapewnij brak podkreślenia */
         }
         a {
             color: #007bff;
@@ -343,7 +346,7 @@
         }
         a:hover {
             color: #0056b3;
-            text-decoration: underline;
+            text-decoration: underline; /* To jest generalna zasada, nadpisana dla .action-button */
         }
 
         /* Contact Section */
@@ -512,7 +515,7 @@
             border-radius: 30px;
             font-size: 1.1em;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             font-family: 'Lato', sans-serif;
             font-weight: 600;
         }
@@ -1026,12 +1029,15 @@
                 threshold: 0.15 // Trigger when 15% of the element is visible
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => { // Removed 'observer' from params, as it's not used inside the loop anymore
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         // If the section is intersecting the viewport
                         entry.target.classList.add('show-section'); // Add the class to show it
-                        observer.unobserve(entry.target); // Stop observing once it's visible
+                        // No unobserve, so it can hide again when scrolled away
+                    } else {
+                        // If the section is not intersecting (scrolled out of view)
+                        entry.target.classList.remove('show-section'); // Remove the class to hide it
                     }
                 });
             }, observerOptions);
