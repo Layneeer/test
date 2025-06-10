@@ -43,7 +43,7 @@
             height: 100vh; /* Full viewport height */
             overflow: hidden; /* Hide any overflow of the image itself */
             z-index: -2; /* Send it to the very back, behind content and hero section */
-            background-image: url('tlo.png'); /* Obrazek tła wizytówki */
+            background-image: url('wizytowka.png'); /* Obrazek tła wizytówki */
             background-size: cover; /* Pokryj cały kontener */
             background-position: center; /* Wyśrodkuj obraz */
             background-repeat: no-repeat; /* Zapobiegaj powtarzaniu */
@@ -138,6 +138,7 @@
             padding: 0;
             z-index: 1001; /* Above nav links when active */
             flex-shrink: 0; /* Prevent shrinking */
+            gap: 8px; /* Space between bars and text */
         }
 
         .hamburger-menu .bar {
@@ -152,7 +153,6 @@
             font-size: 1.1em;
             font-weight: 600;
             white-space: nowrap;
-            margin-left: 8px; /* Odstęp między kreskami a tekstem */
         }
         /* Animacja hamburgera */
         .hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -163,7 +163,7 @@
         /* Hero Section (the large image that fades) */
         #hero-section {
             height: 70vh; /* Initial height for the hero image */
-            background-image: url('wizytowka.png'); /* Używa obrazu wizytówki w sekcji hero */
+            background-image: url('tlo.png'); /* Używa obrazu wizytówki w sekcji hero */
             background-size: cover;
             background-position: center;
             position: relative; /* Allows z-index for content above it */
@@ -177,7 +177,7 @@
             text-align: center;
             color: white; /* Text color for hero content if any */
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow for readability */
-            padding-bottom: 50px; /* Spacing from the bottom of the hero section */
+            padding-bottom: 120px; /* Zwiększono padding-bottom, aby przesunąć zawartość niżej */
             padding-top: 90px; /* Adjust padding to push content below fixed navigation */
         }
 
@@ -187,7 +187,7 @@
             background-color: rgba(255, 255, 255, 0.85); /* White with some transparency */
             padding: 15px 30px;
             border-radius: 10px;
-            margin-top: 15px; /* Space between h1 and box (teraz powyżej pustego miejsca) */
+            margin-top: 0; /* Usunięto margin-top, aby content opierał się na padding-bottom */
             margin-bottom: 30px; /* Space between box and button */
             max-width: 80%; /* Limit width */
             width: fit-content; /* Adjust to content */
@@ -209,7 +209,7 @@
             color: #ffffff;
             padding: 18px 40px;
             font-size: 1.5em;
-            text-decoration: none; /* No underline by default */
+            text-decoration: none !important; /* No underline by default and important to override */
             border-radius: 50px;
             margin-top: 30px;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
@@ -222,7 +222,7 @@
             background-color: #0056b3;
             transform: translateY(-3px);
             box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
-            text-decoration: none; /* No underline on hover */
+            text-decoration: none !important; /* No underline on hover and important to override */
         }
 
         /* Specific styles for the hero section's action button (green) */
@@ -235,7 +235,6 @@
         #hero-section .action-button:hover {
             background-color: #218838; /* Ciemniejszy zielony na hover */
             box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
-            text-decoration: none; /* Explicitly ensure no underline on hover */
         }
 
 
@@ -599,6 +598,10 @@
             .main-nav {
                 height: 70px;
                 padding: 10px 15px; /* Dopasowanie padding dla tabletów */
+                justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
+            }
+            .main-nav .nav-brand {
+                margin-right: 20px; /* Zapewnij odstęp między logo a hamburgerem */
             }
             .main-nav .nav-brand .nav-logo-link img {
                 max-width: 250px;
@@ -674,6 +677,10 @@
             .main-nav {
                 height: 60px;
                 padding: 10px 10px; /* Dopasowanie padding dla mniejszych tabletów */
+                justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
+            }
+            .main-nav .nav-brand {
+                margin-right: 15px; /* Mniejszy odstęp między logo a hamburgerem */
             }
             .main-nav .nav-brand .nav-logo-link img {
                 max-width: 150px; /* Smaller logo on mobile */
@@ -764,6 +771,10 @@
             .main-nav {
                 height: 50px;
                 padding: 8px 8px; /* Dopasowanie padding dla najmniejszych ekranów */
+                justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
+            }
+            .main-nav .nav-brand {
+                margin-right: 10px; /* Mniejszy odstęp między logo a hamburgerem */
             }
             .main-nav .nav-brand .nav-logo-link img {
                 max-width: 100px; /* Even smaller on tiny screens */
