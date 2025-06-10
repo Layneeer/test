@@ -173,7 +173,8 @@
 
         /* Hero Section (the large image that fades) */
         #hero-section {
-            height: 100vh; /* Make hero section full viewport height initially */
+            height: 100vh;
+            min-height: 100vh; /* Ensure it always takes full viewport height */
             background-image: url('wizytowka.png'); /* Używa obrazu wizytówki w sekcji hero */
             background-size: cover;
             background-position: center;
@@ -182,13 +183,13 @@
             opacity: 1; /* Initial opacity, controlled by JS */
             transition: opacity 0.3s ease-out; /* Smooth transition for fading */
             display: flex;
-            justify-content: flex-end; /* Always push content to the bottom of the flex container */
-            align-items: center; /* Center horizontally */
+            justify-content: flex-end;
+            align-items: center;
             flex-direction: column;
             text-align: center;
-            color: white; /* Text color for hero content if any */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow for readability */
-            padding-bottom: 100px; /* Default space from the very bottom of the viewport (for desktop) */
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            padding-bottom: 100px; /* Default for desktop */
             padding-top: 90px; /* Minimal padding-top, content is pushed down by flex-end (for fixed nav) */
         }
 
@@ -259,7 +260,7 @@
 
         /* Scroll Down Arrow */
         .scroll-down-arrow {
-            display: inline-block;
+            display: inline-block; /* Domyślnie widoczna na desktopie */
             margin-top: 50px; /* Space from the button */
             font-size: 3em; /* Large arrow */
             color: white; /* White color */
@@ -614,7 +615,7 @@
         #pricelist,
         #contact,
         #special-image-section,
-        #location-section { /* Zmieniono z project-configurator na location-section */
+        #location-section {
             scroll-margin-top: 90px; /* Adjust for desktop nav height */
         }
 
@@ -623,19 +624,21 @@
         @media (max-width: 992px) {
             .main-nav {
                 height: 70px;
-                padding: 10px 15px; /* Dopasowanie padding dla tabletów */
-                justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
+                padding: 10px 15px;
+                justify-content: center;
             }
             .main-nav .nav-brand {
-                margin-right: 15px; /* Zapewnij odstęp między logo a hamburgerem */
+                margin-right: 15px;
             }
             .main-nav .nav-brand .nav-logo-link img {
                 max-width: 250px;
             }
             #hero-section {
-                height: 100vh; /* Keep full height */
-                padding-bottom: 80px; /* Dostosowanie padding-bottom dla tabletów */
-                padding-top: 70px; /* Dopasowanie do wysokości nav */
+                height: 100vh;
+                min-height: 100vh;
+                padding-bottom: 50px; /* Zmniejszony padding-bottom dla tabletów */
+                padding-top: 70px;
+                background-position: center bottom;
             }
             #hero-section .hero-subtitle-box {
                 font-size: 1.2em;
@@ -659,7 +662,7 @@
             #special-image-section .special-image {
                 height: 250px;
             }
-            #location-section { /* Zmieniono z project-configurator na location-section */
+            #location-section {
                 padding: 30px;
             }
             #location-section h3 {
@@ -668,23 +671,23 @@
 
             /* Tablet/Mobile specific navigation - hamburger menu */
             .main-nav .nav-links {
-                display: none; /* Hide nav links by default on smaller screens */
-                flex-direction: column; /* Revert to column for mobile dropdown */
+                display: none;
+                flex-direction: column;
                 position: absolute;
-                top: 70px; /* Below nav bar height */
+                top: 70px;
                 left: 0;
                 width: 100%;
                 background-color: rgba(255, 255, 255, 0.98);
                 box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
                 border-top: 1px solid #eee;
                 padding: 20px 0;
-                max-height: calc(100vh - 70px); /* Max height to fit viewport */
+                max-height: calc(100vh - 70px);
                 overflow-y: auto;
-                gap: 0; /* No gap for column layout */
-                margin: 0; /* Reset margins for column layout */
-                justify-content: flex-start; /* Reset justify-content for column layout */
+                gap: 0;
+                margin: 0;
+                justify-content: flex-start;
             }
-            .main-nav .nav-links.active { /* Show when hamburger is active */
+            .main-nav .nav-links.active {
                 display: flex;
             }
             .main-nav .nav-links li {
@@ -694,30 +697,35 @@
             .main-nav .nav-links a {
                 font-size: 1.2em;
                 padding: 10px 0;
-                display: block; /* Make link full width */
+                display: block;
             }
             .hamburger-menu {
-                display: flex !important; /* Show hamburger, override desktop default */
-                margin-left: 15px; /* Ensure space between logo and hamburger on mobile */
+                display: flex !important;
+                margin-left: 15px;
+            }
+            .scroll-down-arrow {
+                display: none; /* Ukryj strzałkę na tabletach */
             }
         }
 
         @media (max-width: 768px) {
             .main-nav {
                 height: 60px;
-                padding: 10px 10px; /* Dopasowanie padding dla mniejszych tabletów */
-                justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
+                padding: 10px 10px;
+                justify-content: center;
             }
             .main-nav .nav-brand {
-                margin-right: 10px; /* Mniejszy odstęp między logo a hamburgerem */
+                margin-right: 10px;
             }
             .main-nav .nav-brand .nav-logo-link img {
-                max-width: 150px; /* Smaller logo on mobile */
+                max-width: 150px;
             }
             #hero-section {
-                height: 100vh; /* Keep full height */
-                padding-bottom: 150px; /* Dostosowanie padding-bottom dla telefonów (w tym iPhone 14 Pro Max) */
-                padding-top: 60px; /* Dopasowanie do wysokości nav */
+                height: 100vh;
+                min-height: 100vh;
+                padding-bottom: 50px; /* Zmniejszony padding-bottom dla mobile */
+                padding-top: 60px;
+                background-position: center bottom;
             }
             #hero-section .hero-subtitle-box {
                 font-size: 1em;
@@ -765,7 +773,7 @@
             #special-image-section .special-image {
                 height: 200px;
             }
-            #location-section { /* Zmieniono z project-configurator na location-section */
+            #location-section {
                 padding: 20px;
             }
             #location-section h3 {
@@ -775,15 +783,8 @@
                 font-size: 1em;
                 padding: 8px 15px;
             }
-            /* Tablet/Mobile specific navigation - hamburger menu */
-            .main-nav .nav-links li {
-                margin: 8px 0; /* Dostosuj odstęp dla listy pionowej */
-            }
-            .main-nav .nav-links a {
-                font-size: 1.1em; /* Dostosuj rozmiar czcionki */
-            }
-            .hamburger-menu .menu-text {
-                font-size: 1em;
+            .scroll-down-arrow {
+                display: none; /* Ukryj strzałkę na mobile */
             }
 
             /* Adjust scroll anchor for sections on smaller mobile */
@@ -793,27 +794,29 @@
             #pricelist,
             #contact,
             #special-image-section,
-            #location-section { /* Zmieniono z project-configurator na location-section */
-                scroll-margin-top: 60px; /* Adjust for smaller nav height */
+            #location-section {
+                scroll-margin-top: 60px;
             }
         }
 
         @media (max-width: 480px) {
             .main-nav {
                 height: 50px;
-                padding: 8px 8px; /* Dopasowanie padding dla najmniejszych ekranów */
-                justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
+                padding: 8px 8px;
+                justify-content: center;
             }
             .main-nav .nav-brand {
-                margin-right: 8px; /* Mniejszy odstęp między logo a hamburgerem */
+                margin-right: 8px;
             }
             .main-nav .nav-brand .nav-logo-link img {
-                max-width: 100px; /* Even smaller on tiny screens */
+                max-width: 100px;
             }
             #hero-section {
-                height: 100vh; /* Keep full height */
-                padding-bottom: 120px; /* Dostosowanie padding-bottom dla małych telefonów */
-                padding-top: 50px; /* Dopasowanie do wysokości nav */
+                height: 100vh;
+                min-height: 100vh;
+                padding-bottom: 50px; /* Zmniejszony padding-bottom dla najmniejszych mobile */
+                padding-top: 50px;
+                background-position: center bottom;
             }
             #hero-section .hero-subtitle-box {
                 font-size: 0.9em;
@@ -857,7 +860,7 @@
             #special-image-section .special-image {
                 height: 160px;
             }
-            #location-section { /* Zmieniono z project-configurator na location-section */
+            #location-section {
                 padding: 15px;
             }
             #location-section h3 {
@@ -867,15 +870,8 @@
                 font-size: 0.9em;
                 padding: 6px 12px;
             }
-            /* Tablet/Mobile specific navigation - hamburger menu */
-            .main-nav .nav-links li {
-                margin: 6px 0; /* Dostosuj odstęp dla listy pionowej */
-            }
-            .main-nav .nav-links a {
-                font-size: 1em; /* Dostosuj rozmiar czcionki */
-            }
-            .hamburger-menu .menu-text {
-                font-size: 0.9em;
+            .scroll-down-arrow {
+                display: none; /* Ukryj strzałkę na najmniejszych mobile */
             }
             /* Adjust scroll anchor for sections on smallest mobile */
             #what-are-cpm-rails,
@@ -884,8 +880,8 @@
             #pricelist,
             #contact,
             #special-image-section,
-            #location-section { /* Zmieniono z project-configurator na location-section */
-                scroll-margin-top: 50px; /* Adjust for smallest nav height */
+            #location-section {
+                scroll-margin-top: 50px;
             }
         }
     </style>
@@ -1004,16 +1000,6 @@
                         <td>Specjalne wzory</td>
                         <td>Ut labore</td>
                         <td>Et dolore</td>
-                    </tr>
-                    <tr>
-                        <td>Renowacja</td>
-                        <td>Minim</td>
-                        <td>Veniam</td>
-                    </tr>
-                    <tr>
-                        <td>Usługi dodatkowe</td>
-                        <td>Exercitation</td>
-                        <td>Ullamco</td>
                     </tr>
                 </tbody>
             </table>
