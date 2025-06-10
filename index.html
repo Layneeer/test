@@ -188,8 +188,8 @@
             text-align: center;
             color: white; /* Text color for hero content if any */
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow for readability */
-            padding-bottom: 50px; /* Keep some padding at the bottom */
-            padding-top: 45vh; /* Dramatically increased to push content lower, effectively "under" the main visual of the background image */
+            padding-bottom: 100px; /* Keep some padding at the bottom */
+            padding-top: 60vh; /* Zwiększono do 60vh, aby przesunąć content jeszcze niżej */
         }
 
         /* Usunięto h1 z sekcji hero */
@@ -217,7 +217,7 @@
         .action-button {
             display: inline-block;
             background-color: #007bff; /* Default blue for other buttons */
-            color: #ffffff;
+            color: #ffffff !important; /* Ensure white text */
             padding: 18px 40px;
             font-size: 1.5em;
             text-decoration: none !important; /* No underline by default and important to override */
@@ -234,18 +234,18 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
             text-decoration: none !important; /* No underline on hover and important to override */
+            color: #ffffff !important; /* Ensure white text on hover */
         }
-
         /* Specific styles for the hero section's action button (green) */
         #hero-section .action-button {
-            background-color: #28a745; /* Zmieniono na zielony */
-            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Zmieniono na zielony cień */
+            background-color: #28a745 !important; /* Zmieniono na zielony, z !important */
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3) !important; /* Zmieniono na zielony cień, z !important */
             margin-top: 0; /* Adjusted margin, controlled by hero-subtitle-box */
         }
 
         #hero-section .action-button:hover {
-            background-color: #218838; /* Ciemniejszy zielony na hover */
-            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
+            background-color: #218838 !important; /* Ciemniejszy zielony na hover, z !important */
+            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4) !important; /* Zmieniono na zielony cień, z !important */
         }
 
         /* Force removal of ::after pseudo-element for all action buttons */
@@ -436,11 +436,11 @@
         .hidden-section {
             opacity: 0;
             transform: translateY(60px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
         }
         .show-section {
             opacity: 1;
             transform: translateY(0);
+            transition: opacity 1s ease-out, transform 1s ease-out; /* Only animate when showing */
         }
 
         /* Fixed Contact Arrow */
