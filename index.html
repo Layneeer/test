@@ -76,10 +76,10 @@
             }
             .main-nav .nav-links {
                 flex-grow: 1; /* Allow menu to take space */
-                display: flex; /* Ensure it's flex on desktop */
+                display: flex !important; /* Ensure it's flex on desktop, override mobile default */
             }
             .hamburger-menu {
-                display: none; /* Hide hamburger on desktop */
+                display: none !important; /* Hide hamburger on desktop, override mobile default */
             }
         }
 
@@ -182,14 +182,14 @@
             opacity: 1; /* Initial opacity, controlled by JS */
             transition: opacity 0.3s ease-out; /* Smooth transition for fading */
             display: flex;
-            justify-content: flex-end; /* Push content to the bottom */
-            align-items: center;
+            justify-content: flex-start; /* Align content to the top of the flex container */
+            align-items: center; /* Center horizontally */
             flex-direction: column;
             text-align: center;
             color: white; /* Text color for hero content if any */
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow for readability */
-            padding-bottom: 200px; /* Zwiększono padding-bottom, aby przesunąć zawartość niżej */
-            padding-top: 15vh; /* Zwiększono padding-top, aby content był pod obrazem */
+            padding-bottom: 50px; /* Keep some padding at the bottom */
+            padding-top: 45vh; /* Dramatically increased to push content lower, effectively "under" the main visual of the background image */
         }
 
         /* Usunięto h1 z sekcji hero */
@@ -689,7 +689,7 @@
                 display: block; /* Make link full width */
             }
             .hamburger-menu {
-                display: flex; /* Show hamburger */
+                display: flex !important; /* Show hamburger, override desktop default */
                 margin-left: 15px; /* Ensure space between logo and hamburger on mobile */
             }
         }
