@@ -33,7 +33,7 @@
             height: 100vh; /* Full viewport height */
             overflow: hidden; /* Hide any overflow of the image itself */
             z-index: -2; /* Send it to the very back, behind content and hero section */
-            background-image: url('tlo.png'); /* Obrazek tła wizytówki */
+            background-image: url('wizytowka.png'); /* Obrazek tła wizytówki */
             background-size: cover; /* Pokryj cały kontener */
             background-position: center; /* Wyśrodkuj obraz */
             background-repeat: no-repeat; /* Zapobiegaj powtarzaniu */
@@ -71,12 +71,13 @@
         }
 
         .main-nav .nav-links {
-            display: flex;
+            display: flex; /* Zawsze flex dla układu poziomego */
             list-style: none;
             margin: 0; /* Reset margin */
             padding: 0;
             flex-grow: 1; /* Rozciągnij, aby zająć dostępną przestrzeń */
             justify-content: center; /* Wyśrodkuj elementy li wewnątrz nav-links */
+            white-space: nowrap; /* Zapobiegaj zawijaniu linków */
         }
 
         .main-nav .nav-links li {
@@ -91,7 +92,6 @@
             padding: 5px 0;
             position: relative;
             transition: color 0.3s ease;
-            white-space: nowrap; /* Prevent link text wrapping */
         }
 
         .main-nav .nav-links a::after { /* Underline effect */
@@ -109,36 +109,15 @@
             width: 100%;
         }
 
-        /* Hamburger Menu (Hidden by default on desktop) */
+        /* Hamburger Menu (Removed - always hide) */
         .hamburger-menu {
-            display: none; /* Hide on desktop */
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001; /* Above nav links when active */
-            margin-left: 20px; /* Odstęp od menu (dla desktop, ukryty) */
+            display: none; /* Ukryte całkowicie */
         }
-
-        .hamburger-menu .bar {
-            width: 100%;
-            height: 3px;
-            background-color: #34495e;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        .hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
-        .hamburger-menu.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         /* Hero Section (the large image that fades) */
         #hero-section {
             height: 70vh; /* Initial height for the hero image */
-            background-image: url('wizytowka.png'); /* Używa obrazu wizytówki w sekcji hero */
+            background-image: url('tlo.png'); /* Używa obrazu wizytówki w sekcji hero */
             background-size: cover;
             background-position: center;
             position: relative; /* Allows z-index for content above it */
@@ -156,20 +135,13 @@
             padding-top: 90px; /* Adjust padding to push content below fixed navigation */
         }
 
-        #hero-section h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4em;
-            margin-bottom: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
+        /* Usunięto h1 z sekcji hero */
 
         #hero-section .hero-subtitle-box { /* White rectangle for subtitle */
             background-color: rgba(255, 255, 255, 0.85); /* White with some transparency */
             padding: 15px 30px;
             border-radius: 10px;
-            margin-top: 15px; /* Space between h1 and box */
+            margin-top: 15px; /* Space between h1 and box (teraz powyżej pustego miejsca) */
             margin-bottom: 30px; /* Space between box and button */
             max-width: 80%; /* Limit width */
             width: fit-content; /* Adjust to content */
@@ -184,16 +156,16 @@
             margin: 0; /* Remove default paragraph margin */
         }
 
-        /* Hero section action button */
+        /* Hero section action button - Zmieniono kolor na niebieski */
         #hero-section .action-button {
-            background-color: #28a745; /* Green color matching contact arrow */
-            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Green shadow */
+            background-color: #007bff; /* Zmieniono na niebieski */
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Zmieniono na niebieski cień */
             margin-top: 0; /* Adjusted margin, controlled by hero-subtitle-box */
         }
         #hero-section .action-button:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #0056b3; /* Ciemniejszy niebieski na hover */
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
+            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
         }
 
         /* Main Content Container */
@@ -582,9 +554,7 @@
             #hero-section {
                 padding-top: 70px; /* Match nav height */
             }
-            #hero-section h1 {
-                font-size: 3em;
-            }
+            /* Usunięto h1 z sekcji hero, więc nie ma tu jego stylu */
             #hero-section .hero-subtitle-box {
                 font-size: 1.2em;
             }
@@ -614,48 +584,28 @@
                 height: 300px;
             }
 
-            /* Tablet/Mobile specific navigation */
+            /* Tablet/Mobile specific navigation - zawsze poziomo */
             .main-nav .nav-links {
-                display: none; /* Hide nav links by default on smaller screens */
-                flex-direction: column;
-                position: absolute;
-                top: 70px; /* Below nav bar height */
-                left: 0;
-                width: 100%;
-                background-color: rgba(255, 255, 255, 0.98);
-                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-                border-top: 1px solid #eee;
-                padding: 20px 0;
-                max-height: calc(100vh - 70px); /* Max height to fit viewport */
-                overflow-y: auto;
-                gap: 0; /* No gap for column layout */
-                margin: 0; /* Reset margins for column layout */
-            }
-            .main-nav .nav-links.active { /* Show when hamburger is active */
                 display: flex;
+                flex-direction: row; /* Zawsze poziomo */
+                justify-content: center; /* Wyśrodkuj na mobile */
+                width: auto; /* Pozwól, by szerokość była dynamiczna */
+                position: static; /* Usuń pozycjonowanie absolutne */
+                top: auto;
+                left: auto;
+                background-color: transparent; /* Usuń tło z rozwijanego menu */
+                box-shadow: none; /* Usuń cień z rozwijanego menu */
+                border-top: none; /* Usuń border z rozwijanego menu */
+                padding: 0; /* Resetuj padding */
+                max-height: none; /* Usuń ograniczenie wysokości */
+                overflow-y: visible; /* Usuń scrollowanie pionowe */
             }
             .main-nav .nav-links li {
-                margin: 10px 0;
-                text-align: center;
+                margin: 0 8px; /* Zmniejsz odstęp między linkami na tabletach */
             }
             .main-nav .nav-links a {
-                font-size: 1.2em;
-                padding: 10px 0;
-                display: block; /* Make link full width */
-            }
-            .hamburger-menu {
-                display: flex; /* Show hamburger */
-            }
-
-            /* Adjust scroll anchor for sections on tablet/mobile */
-            #what-are-cpm-rails,
-            #benefits,
-            #indications,
-            #pricelist,
-            #contact,
-            #special-image-section,
-            #project-configurator {
-                scroll-margin-top: 70px; /* Adjust for smaller nav height */
+                font-size: 1em; /* Zmniejsz czcionkę na tabletach */
+                padding: 5px 0;
             }
         }
 
@@ -670,9 +620,7 @@
             #hero-section {
                 padding-top: 60px; /* Match nav height */
             }
-            #hero-section h1 {
-                font-size: 2.5em;
-            }
+            /* Usunięto h1 z sekcji hero, więc nie ma tu jego stylu */
             #hero-section .hero-subtitle-box {
                 font-size: 1em;
             }
@@ -729,9 +677,12 @@
                 padding: 10px 20px;
                 font-size: 1em;
             }
-            .main-nav .nav-links {
-                top: 60px; /* Below nav bar height */
-                max-height: calc(100vh - 60px);
+            /* Tablet/Mobile specific navigation - zawsze poziomo */
+            .main-nav .nav-links li {
+                margin: 0 6px; /* Zmniejsz odstęp między linkami na mniejszych tabletach */
+            }
+            .main-nav .nav-links a {
+                font-size: 0.9em; /* Zmniejsz czcionkę na mniejszych tabletach */
             }
 
             /* Adjust scroll anchor for sections on smaller mobile */
@@ -757,10 +708,7 @@
             #hero-section {
                 padding-top: 50px; /* Match nav height */
             }
-            #hero-section h1 {
-                font-size: 2em;
-                letter-spacing: 1px;
-            }
+            /* Usunięto h1 z sekcji hero, więc nie ma tu jego stylu */
             #hero-section .hero-subtitle-box {
                 font-size: 0.9em;
             }
@@ -813,9 +761,12 @@
                 padding: 8px 15px;
                 font-size: 0.9em;
             }
-            .main-nav .nav-links {
-                top: 50px; /* Below nav bar height */
-                max-height: calc(100vh - 50px);
+            /* Tablet/Mobile specific navigation - zawsze poziomo */
+            .main-nav .nav-links li {
+                margin: 0 4px; /* Zmniejsz odstęp między linkami na najmniejszych ekranach */
+            }
+            .main-nav .nav-links a {
+                font-size: 0.8em; /* Zmniejsz czcionkę na najmniejszych ekranach */
             }
             /* Adjust scroll anchor for sections on smallest mobile */
             #what-are-cpm-rails,
@@ -839,7 +790,7 @@
     <nav class="main-nav">
         <div class="nav-brand">
             <a href="#hero-section" class="nav-logo-link">
-                <img src="logo2.png" alt="Logo Poz-bruk">
+                <img src="logo.png" alt="Logo Poz-bruk">
             </a>
         </div>
         <ul class="nav-links">
@@ -850,14 +801,10 @@
             <li><a href="#contact">Kontakt</a></li>
             <li><a href="#project-configurator">Wizualizator</a></li>
         </ul>
-        <button class="hamburger-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
+        <!-- Hamburger menu zostało usunięte zgodnie z prośbą -->
     </nav>
     <section id="hero-section">
-        <h1>Poz-bruk</h1>
+        <!-- Nagłówek h1 "Poz-bruk" został usunięty -->
         <div class="hero-subtitle-box"> <p>Profesjonalizm i doświadczenie w układaniu kostki brukowej.</p>
         </div>
         <a href="#contact" class="action-button">Darmowa wycena!</a>
@@ -1056,30 +1003,7 @@
                 });
             }
 
-            // --- Hamburger Menu Logic ---
-            const hamburgerMenu = document.querySelector('.hamburger-menu');
-            const navLinks = document.querySelector('.nav-links');
-
-            if (hamburgerMenu) {
-                hamburgerMenu.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    hamburgerMenu.classList.toggle('active');
-                });
-
-                // Close menu when a link is clicked (for single-page navigation)
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        if (navLinks.classList.contains('active')) { // Only close if active
-                            navLinks.classList.remove('active');
-                            hamburgerMenu.classList.remove('active');
-                        }
-                    });
-                });
-            }
-            // --- End Hamburger Menu Logic ---
-
-
-            // Project Configurator Logic
+            // --- Project Configurator Logic ---
             const projectButtons = document.querySelectorAll('.configurator-controls button');
             const projectImage = document.getElementById('project-image');
             const projectDescription = document.getElementById('project-description');
