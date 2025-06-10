@@ -11,6 +11,16 @@
     <link rel="apple-touch-icon" href="_assets/images/6c0784fb6ee41f824ce2e50c3bfda591.png" sizes="180x180">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        /* Global Reset / Base */
+        * {
+            box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+        }
+        img { /* Global responsive image rule */
+            max-width: 100%;
+            height: auto;
+            display: block; /* Removes extra space below image */
+        }
+
         /* General Body and Container Styles */
         body {
             font-family: 'Lato', Arial, sans-serif; /* Readable body font */
@@ -61,13 +71,11 @@
             display: flex;
             align-items: center;
             flex-shrink: 0; /* Prevent shrinking on smaller screens */
-            margin-right: 20px; /* Odstęp od menu */
         }
 
         .main-nav .nav-brand .nav-logo-link img {
             max-width: 300px; /* Logo na desktopie zmniejszone dla lepszego dopasowania */
             height: auto;
-            display: block;
             border-radius: 8px; /* Maintain rounded corners */
         }
 
@@ -78,7 +86,13 @@
             padding: 0;
             flex-grow: 1; /* Rozciągnij, aby zająć dostępną przestrzeń */
             justify-content: center; /* Wyśrodkuj elementy li wewnątrz nav-links */
-            white-space: nowrap; /* Zapobiegaj zawijaniu linków */
+            white-space: normal; /* Default to normal for wrapping */
+        }
+
+        @media (min-width: 993px) { /* Apply nowrap only for desktop */
+            .main-nav .nav-links {
+                white-space: nowrap;
+            }
         }
 
         .main-nav .nav-links li {
@@ -123,6 +137,7 @@
             cursor: pointer;
             padding: 0;
             z-index: 1001; /* Above nav links when active */
+            flex-shrink: 0; /* Prevent shrinking */
         }
 
         .hamburger-menu .bar {
@@ -187,24 +202,40 @@
             margin: 0; /* Remove default paragraph margin */
         }
 
-        /* Hero section action button - Zmieniono kolor na zielony i usunięto niebieskie podświetlenie */
+        /* Action Button - General Styles (re-organized for clarity and priority) */
+        .action-button {
+            display: inline-block;
+            background-color: #007bff; /* Default blue for other buttons */
+            color: #ffffff;
+            padding: 18px 40px;
+            font-size: 1.5em;
+            text-decoration: none; /* No underline by default */
+            border-radius: 50px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 700;
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
+            text-decoration: none; /* No underline on hover */
+        }
+
+        /* Specific styles for the hero section's action button (green) */
         #hero-section .action-button {
             background-color: #28a745; /* Zmieniono na zielony */
             box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Zmieniono na zielony cień */
             margin-top: 0; /* Adjusted margin, controlled by hero-subtitle-box */
-            text-decoration: none !important; /* Explicitly remove any underline on hover/active */
-            position: relative;
         }
 
         #hero-section .action-button:hover {
             background-color: #218838; /* Ciemniejszy zielony na hover */
-            transform: translateY(-3px);
             box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
-            text-decoration: none !important; /* Zapewnij brak podkreślenia */
-        }
-        /* Usunięcie ::after dla tego konkretnego przycisku, aby nie było niebieskiej kreski */
-        #hero-section .action-button::after {
-            content: none !important;
+            text-decoration: none; /* Explicitly ensure no underline on hover */
         }
 
 
@@ -318,27 +349,7 @@
             padding: 10px 0;
         }
 
-        /* Buttons and Links (General - not hero button) */
-        .action-button { /* To jest ogólny styl dla buttonów */
-            display: inline-block;
-            background-color: #007bff; /* Default blue for other buttons */
-            color: #ffffff;
-            padding: 18px 40px;
-            font-size: 1.5em;
-            text-decoration: none;
-            border-radius: 50px;
-            margin-top: 30px;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            text-transform: uppercase;
-            font-weight: 700;
-            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
-        }
-        .action-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
-            text-decoration: none !important; /* Zapewnij brak podkreślenia */
-        }
+        /* Links (General) */
         a {
             color: #007bff;
             text-decoration: none;
@@ -346,7 +357,7 @@
         }
         a:hover {
             color: #0056b3;
-            text-decoration: underline; /* To jest generalna zasada, nadpisana dla .action-button */
+            text-decoration: underline;
         }
 
         /* Contact Section */
@@ -515,7 +526,7 @@
             border-radius: 30px;
             font-size: 1.1em;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             font-family: 'Lato', sans-serif;
             font-weight: 600;
         }
@@ -838,8 +849,7 @@
 <body>
 
     <div class="global-background-image-container">
-        <!-- Obrazek tła strony ustawiony w CSS powyżej. Został przywrócony poprzedni obrazek i dodano rozmycie. -->
-    </div>
+        </div>
 
     <nav class="main-nav">
         <div class="nav-brand">
@@ -859,11 +869,9 @@
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-            <span class="menu-text">MENU</span> <!-- Dodano tekst "MENU" -->
-        </button>
+            <span class="menu-text">MENU</span> </button>
     </nav>
     <section id="hero-section">
-        <!-- Nagłówek h1 "Poz-bruk" został usunięty -->
         <div class="hero-subtitle-box"> <p>Profesjonalizm i doświadczenie w układaniu kostki brukowej.</p>
         </div>
         <a href="#contact" class="action-button">Darmowa wycena!</a>
@@ -1029,15 +1037,13 @@
                 threshold: 0.15 // Trigger when 15% of the element is visible
             };
 
-            const observer = new IntersectionObserver((entries) => { // Removed 'observer' from params, as it's not used inside the loop anymore
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // If the section is intersecting the viewport
-                        entry.target.classList.add('show-section'); // Add the class to show it
-                        // No unobserve, so it can hide again when scrolled away
+                        entry.target.classList.add('show-section');
                     } else {
-                        // If the section is not intersecting (scrolled out of view)
-                        entry.target.classList.remove('show-section'); // Remove the class to hide it
+                        // If the section is not intersecting, hide it again
+                        entry.target.classList.remove('show-section');
                     }
                 });
             }, observerOptions);
@@ -1049,18 +1055,14 @@
 
             // Hero Section Fading Logic
             const heroSection = document.getElementById('hero-section');
-            // Ensure heroSection exists before trying to get offsetHeight
             if (heroSection) {
-                const heroHeight = heroSection.offsetHeight; // Get initial height of the hero section
+                const heroHeight = heroSection.offsetHeight;
 
                 window.addEventListener('scroll', () => {
                     const scrollPosition = window.scrollY;
-
-                    // Calculate opacity based on scroll position relative to hero section's height
-                    // Fades out as the hero section scrolls past the top of the viewport
-                    let opacity = 1 - (scrollPosition / (heroHeight * 0.7)); // Adjusted fade speed for better effect
-                    if (opacity < 0) opacity = 0; // Don't go below 0
-                    if (opacity > 1) opacity = 1; // Don't go above 1
+                    let opacity = 1 - (scrollPosition / (heroHeight * 0.7));
+                    if (opacity < 0) opacity = 0;
+                    if (opacity > 1) opacity = 1;
                     heroSection.style.opacity = opacity;
                 });
             }
