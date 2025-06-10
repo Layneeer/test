@@ -60,11 +60,26 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000; /* High z-index to be above content */
             display: flex;
-            justify-content: space-between; /* Rozłóż elementy na boki */
+            justify-content: center; /* Default: centered for mobile-first approach */
             align-items: center;
             padding: 10px 20px; /* Zwiększono padding poziomy dla lepszego dopasowania */
             height: 90px; /* Fixed height for consistent spacing, adjusted for larger logo */
             transition: background-color 0.3s ease;
+        }
+
+        @media (min-width: 993px) { /* Desktop only */
+            .main-nav {
+                justify-content: space-between; /* Space out logo and menu on desktop */
+            }
+            .main-nav .nav-brand {
+                margin-right: 20px; /* Space from menu */
+            }
+            .main-nav .nav-links {
+                flex-grow: 1; /* Allow menu to take space */
+            }
+            .hamburger-menu {
+                display: none; /* Hide hamburger on desktop */
+            }
         }
 
         .main-nav .nav-brand {
@@ -86,13 +101,7 @@
             padding: 0;
             flex-grow: 1; /* Rozciągnij, aby zająć dostępną przestrzeń */
             justify-content: center; /* Wyśrodkuj elementy li wewnątrz nav-links */
-            white-space: normal; /* Default to normal for wrapping */
-        }
-
-        @media (min-width: 993px) { /* Apply nowrap only for desktop */
-            .main-nav .nav-links {
-                white-space: nowrap;
-            }
+            white-space: nowrap; /* Zapobiegaj zawijaniu linków na desktopie */
         }
 
         .main-nav .nav-links li {
@@ -124,9 +133,9 @@
             width: 100%;
         }
 
-        /* Hamburger Menu - domyślnie ukryty, pokazywany w media query */
+        /* Hamburger Menu - always visible on mobile, hidden on desktop */
         .hamburger-menu {
-            display: none; /* Ukryte domyślnie na desktopie */
+            display: flex; /* Always flex (visible) on mobile */
             flex-direction: row; /* Kreski i tekst w jednej linii */
             justify-content: flex-start; /* Ułóż elementy od lewej */
             align-items: center; /* Wyśrodkuj pionowo */
@@ -138,7 +147,7 @@
             padding: 0;
             z-index: 1001; /* Above nav links when active */
             flex-shrink: 0; /* Prevent shrinking */
-            gap: 8px; /* Space between bars and text */
+            margin-left: 20px; /* Space from logo on mobile default */
         }
 
         .hamburger-menu .bar {
@@ -153,6 +162,7 @@
             font-size: 1.1em;
             font-weight: 600;
             white-space: nowrap;
+            margin-left: 8px; /* Odstęp między kreskami a tekstem */
         }
         /* Animacja hamburgera */
         .hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -177,7 +187,7 @@
             text-align: center;
             color: white; /* Text color for hero content if any */
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow for readability */
-            padding-bottom: 120px; /* Zwiększono padding-bottom, aby przesunąć zawartość niżej */
+            padding-bottom: 200px; /* Zwiększono padding-bottom, aby przesunąć zawartość niżej */
             padding-top: 90px; /* Adjust padding to push content below fixed navigation */
         }
 
@@ -235,6 +245,15 @@
         #hero-section .action-button:hover {
             background-color: #218838; /* Ciemniejszy zielony na hover */
             box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Force removal of ::after pseudo-element for all action buttons */
+        .action-button::after {
+            content: none !important; /* This is the key to remove the blue line */
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
 
@@ -601,7 +620,7 @@
                 justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
             }
             .main-nav .nav-brand {
-                margin-right: 20px; /* Zapewnij odstęp między logo a hamburgerem */
+                margin-right: 15px; /* Zapewnij odstęp między logo a hamburgerem */
             }
             .main-nav .nav-brand .nav-logo-link img {
                 max-width: 250px;
@@ -670,6 +689,7 @@
             }
             .hamburger-menu {
                 display: flex; /* Show hamburger */
+                margin-left: 15px; /* Ensure space between logo and hamburger on mobile */
             }
         }
 
@@ -680,7 +700,7 @@
                 justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
             }
             .main-nav .nav-brand {
-                margin-right: 15px; /* Mniejszy odstęp między logo a hamburgerem */
+                margin-right: 10px; /* Mniejszy odstęp między logo a hamburgerem */
             }
             .main-nav .nav-brand .nav-logo-link img {
                 max-width: 150px; /* Smaller logo on mobile */
@@ -774,7 +794,7 @@
                 justify-content: center; /* Wyśrodkuj zawartość nav na mobile (logo + hamburger) */
             }
             .main-nav .nav-brand {
-                margin-right: 10px; /* Mniejszy odstęp między logo a hamburgerem */
+                margin-right: 8px; /* Mniejszy odstęp między logo a hamburgerem */
             }
             .main-nav .nav-brand .nav-logo-link img {
                 max-width: 100px; /* Even smaller on tiny screens */
