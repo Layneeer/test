@@ -126,7 +126,7 @@
             height: 2px;
             bottom: -5px;
             left: 0; /* Zaczyna się od początku */
-            background-color: #007bff; /* Blue for hover underline */
+            background-color: #28a745; /* Changed to green */
             transition: width 0.3s ease-out;
         }
 
@@ -217,7 +217,7 @@
         /* Action Button - General Styles (re-organized for clarity and priority) */
         .action-button {
             display: inline-block;
-            background-color: #007bff; /* Default blue for other buttons */
+            background-color: #28a745; /* Changed to green */
             color: #ffffff !important; /* Ensure white text */
             padding: 18px 40px;
             font-size: 1.5em;
@@ -227,13 +227,13 @@
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             text-transform: uppercase;
             font-weight: 700;
-            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Green shadow */
         }
 
         .action-button:hover {
-            background-color: #0056b3;
+            background-color: #218838; /* Darker green on hover */
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
+            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4); /* Darker green shadow */
             text-decoration: none !important; /* No underline on hover and important to override */
             color: #ffffff !important; /* Ensure white text on hover */
         }
@@ -399,12 +399,12 @@
 
         /* Links (General) */
         a {
-            color: #007bff;
+            color: #28a745; /* Changed to green */
             text-decoration: none;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #0056b3;
+            color: #218838; /* Darker green on hover */
             text-decoration: underline;
         }
 
@@ -516,7 +516,7 @@
         }
         #special-image-section h3 {
             font-family: 'Montserrat', sans-serif;
-            color: #007bff;
+            color: #28a745; /* Changed to green */
             font-size: 2.2em;
             margin-bottom: 25px;
             font-weight: 600;
@@ -558,7 +558,7 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
         #location-section h2 {
-            color: #007bff;
+            color: #28a745; /* Changed to green */
             margin-top: 0;
             margin-bottom: 30px;
         }
@@ -636,7 +636,7 @@
             #hero-section {
                 height: 100vh;
                 min-height: 100vh;
-                padding-bottom: 50px; /* Zmniejszony padding-bottom dla tabletów */
+                padding-bottom: 80px; /* Zwiększony padding-bottom dla tabletów */
                 padding-top: 70px;
                 background-position: center bottom;
             }
@@ -723,7 +723,7 @@
             #hero-section {
                 height: 100vh;
                 min-height: 100vh;
-                padding-bottom: 50px; /* Zmniejszony padding-bottom dla mobile */
+                padding-bottom: 80px; /* Zwiększony padding-bottom dla mobile */
                 padding-top: 60px;
                 background-position: center bottom;
             }
@@ -814,7 +814,7 @@
             #hero-section {
                 height: 100vh;
                 min-height: 100vh;
-                padding-bottom: 50px; /* Zmniejszony padding-bottom dla najmniejszych mobile */
+                padding-bottom: 80px; /* Zwiększony padding-bottom dla najmniejszych mobile */
                 padding-top: 50px;
                 background-position: center bottom;
             }
@@ -914,7 +914,7 @@
     <section id="hero-section">
         <div class="hero-subtitle-box"> <p>Profesjonalizm i doświadczenie w układaniu kostki brukowej.</p>
         </div>
-        <a href="#contact" class="action-button">Kliknij Tutaj!<br>Po darmową wycenę!</a>
+        <a href="#contact" class="action-button">Darmowa wycena!</a>
         <a href="#what-are-cpm-rails" class="scroll-down-arrow">&darr;</a> <!-- Strzałka do przewijania -->
     </section>
 
