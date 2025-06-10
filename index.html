@@ -76,6 +76,7 @@
             }
             .main-nav .nav-links {
                 flex-grow: 1; /* Allow menu to take space */
+                display: flex; /* Ensure it's flex on desktop */
             }
             .hamburger-menu {
                 display: none; /* Hide hamburger on desktop */
@@ -95,13 +96,13 @@
         }
 
         .main-nav .nav-links {
-            display: flex; /* Zawsze flex dla układu poziomego na desktopie */
+            display: none; /* Hidden by default on mobile, shown by JS when active */
             list-style: none;
             margin: 0; /* Reset margin */
             padding: 0;
-            flex-grow: 1; /* Rozciągnij, aby zająć dostępną przestrzeń */
+            flex-grow: 1; /* Allow menu to take space */
             justify-content: center; /* Wyśrodkuj elementy li wewnątrz nav-links */
-            white-space: nowrap; /* Zapobiegaj zawijaniu linków na desktopie */
+            white-space: nowrap; /* Prevent text wrapping on desktop */
         }
 
         .main-nav .nav-links li {
@@ -133,7 +134,7 @@
             width: 100%;
         }
 
-        /* Hamburger Menu - always visible on mobile, hidden on desktop */
+        /* Hamburger Menu - visible on mobile */
         .hamburger-menu {
             display: flex; /* Always flex (visible) on mobile */
             flex-direction: row; /* Kreski i tekst w jednej linii */
@@ -188,7 +189,7 @@
             color: white; /* Text color for hero content if any */
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow for readability */
             padding-bottom: 200px; /* Zwiększono padding-bottom, aby przesunąć zawartość niżej */
-            padding-top: 90px; /* Adjust padding to push content below fixed navigation */
+            padding-top: 15vh; /* Zwiększono padding-top, aby content był pod obrazem */
         }
 
         /* Usunięto h1 z sekcji hero */
