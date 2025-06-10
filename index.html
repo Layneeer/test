@@ -33,7 +33,7 @@
             height: 100vh; /* Full viewport height */
             overflow: hidden; /* Hide any overflow of the image itself */
             z-index: -2; /* Send it to the very back, behind content and hero section */
-            background-image: url('wizytowka.png'); /* Obrazek tła wizytówki */
+            background-image: url('tlo.png'); /* Obrazek tła wizytówki */
             background-size: cover; /* Pokryj cały kontener */
             background-position: center; /* Wyśrodkuj obraz */
             background-repeat: no-repeat; /* Zapobiegaj powtarzaniu */
@@ -109,15 +109,44 @@
             width: 100%;
         }
 
-        /* Hamburger Menu (Removed - always hide) */
+        /* Hamburger Menu */
         .hamburger-menu {
-            display: none; /* Ukryte całkowicie */
+            display: none; /* Ukryte domyślnie na desktopie */
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001; /* Above nav links when active */
+            margin-left: 20px; /* Odstęp od menu */
+        }
+
+        .hamburger-menu .bar {
+            width: 100%;
+            height: 3px;
+            background-color: #34495e;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+        .hamburger-menu.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        .hamburger-menu .menu-text {
+            color: #34495e;
+            font-size: 1.1em;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 8px; /* Odstęp między kreskami a tekstem */
         }
 
         /* Hero Section (the large image that fades) */
         #hero-section {
             height: 70vh; /* Initial height for the hero image */
-            background-image: url('tlo.png'); /* Używa obrazu wizytówki w sekcji hero */
+            background-image: url('wizytowka.png'); /* Używa obrazu wizytówki w sekcji hero */
             background-size: cover;
             background-position: center;
             position: relative; /* Allows z-index for content above it */
@@ -156,16 +185,23 @@
             margin: 0; /* Remove default paragraph margin */
         }
 
-        /* Hero section action button - Zmieniono kolor na niebieski */
+        /* Hero section action button - Zmieniono kolor na zielony i usunięto niebieskie podświetlenie */
         #hero-section .action-button {
-            background-color: #007bff; /* Zmieniono na niebieski */
-            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Zmieniono na niebieski cień */
+            background-color: #28a745; /* Zmieniono na zielony */
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Zmieniono na zielony cień */
             margin-top: 0; /* Adjusted margin, controlled by hero-subtitle-box */
+            text-decoration: none; /* Explicitly remove default underline */
+            position: relative; /* Potrzebne, jeśli w przyszłości będzie ::after */
         }
+        /* Specyficzna zasada, aby wyłączyć ::after dla tego przycisku, jeśli by się pojawiał */
+        #hero-section .action-button::after {
+            content: none; /* Usuń pseudo-element */
+        }
+
         #hero-section .action-button:hover {
-            background-color: #0056b3; /* Ciemniejszy niebieski na hover */
+            background-color: #218838; /* Ciemniejszy zielony na hover */
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
+            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
         }
 
         /* Main Content Container */
@@ -554,7 +590,6 @@
             #hero-section {
                 padding-top: 70px; /* Match nav height */
             }
-            /* Usunięto h1 z sekcji hero, więc nie ma tu jego stylu */
             #hero-section .hero-subtitle-box {
                 font-size: 1.2em;
             }
@@ -584,28 +619,51 @@
                 height: 300px;
             }
 
-            /* Tablet/Mobile specific navigation - zawsze poziomo */
+            /* Tablet/Mobile specific navigation - hamburger menu */
             .main-nav .nav-links {
+                display: none; /* Hide nav links by default on smaller screens */
+                flex-direction: column; /* Revert to column for mobile dropdown */
+                position: absolute;
+                top: 70px; /* Below nav bar height */
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid #eee;
+                padding: 20px 0;
+                max-height: calc(100vh - 70px); /* Max height to fit viewport */
+                overflow-y: auto;
+                gap: 0; /* No gap for column layout */
+                margin: 0; /* Reset margins for column layout */
+                justify-content: flex-start; /* Reset justify-content for column layout */
+            }
+            .main-nav .nav-links.active { /* Show when hamburger is active */
                 display: flex;
-                flex-direction: row; /* Zawsze poziomo */
-                justify-content: center; /* Wyśrodkuj na mobile */
-                width: auto; /* Pozwól, by szerokość była dynamiczna */
-                position: static; /* Usuń pozycjonowanie absolutne */
-                top: auto;
-                left: auto;
-                background-color: transparent; /* Usuń tło z rozwijanego menu */
-                box-shadow: none; /* Usuń cień z rozwijanego menu */
-                border-top: none; /* Usuń border z rozwijanego menu */
-                padding: 0; /* Resetuj padding */
-                max-height: none; /* Usuń ograniczenie wysokości */
-                overflow-y: visible; /* Usuń scrollowanie pionowe */
             }
             .main-nav .nav-links li {
-                margin: 0 8px; /* Zmniejsz odstęp między linkami na tabletach */
+                margin: 10px 0;
+                text-align: center;
             }
             .main-nav .nav-links a {
-                font-size: 1em; /* Zmniejsz czcionkę na tabletach */
-                padding: 5px 0;
+                font-size: 1.2em;
+                padding: 10px 0;
+                display: block; /* Make link full width */
+            }
+            .hamburger-menu {
+                display: flex; /* Show hamburger */
+                flex-direction: row; /* Align bars and text horizontally */
+                align-items: center; /* Vertically center bars and text */
+                gap: 8px; /* Space between bars and text */
+                padding-right: 10px; /* Keep some padding from the right edge */
+                width: auto; /* Allow button to shrink/grow with content */
+                height: auto; /* Allow button to shrink/grow with content */
+            }
+            .hamburger-menu .menu-text {
+                color: #34495e;
+                font-size: 1.1em;
+                font-weight: 600;
+                white-space: nowrap; /* Prevent text wrapping */
+                margin-left: 0; /* Reset margin for mobile */
             }
         }
 
@@ -620,7 +678,6 @@
             #hero-section {
                 padding-top: 60px; /* Match nav height */
             }
-            /* Usunięto h1 z sekcji hero, więc nie ma tu jego stylu */
             #hero-section .hero-subtitle-box {
                 font-size: 1em;
             }
@@ -677,12 +734,15 @@
                 padding: 10px 20px;
                 font-size: 1em;
             }
-            /* Tablet/Mobile specific navigation - zawsze poziomo */
+            /* Tablet/Mobile specific navigation - hamburger menu */
             .main-nav .nav-links li {
-                margin: 0 6px; /* Zmniejsz odstęp między linkami na mniejszych tabletach */
+                margin: 8px 0; /* Dostosuj odstęp dla listy pionowej */
             }
             .main-nav .nav-links a {
-                font-size: 0.9em; /* Zmniejsz czcionkę na mniejszych tabletach */
+                font-size: 1.1em; /* Dostosuj rozmiar czcionki */
+            }
+            .hamburger-menu .menu-text {
+                font-size: 1em;
             }
 
             /* Adjust scroll anchor for sections on smaller mobile */
@@ -708,7 +768,6 @@
             #hero-section {
                 padding-top: 50px; /* Match nav height */
             }
-            /* Usunięto h1 z sekcji hero, więc nie ma tu jego stylu */
             #hero-section .hero-subtitle-box {
                 font-size: 0.9em;
             }
@@ -761,12 +820,15 @@
                 padding: 8px 15px;
                 font-size: 0.9em;
             }
-            /* Tablet/Mobile specific navigation - zawsze poziomo */
+            /* Tablet/Mobile specific navigation - hamburger menu */
             .main-nav .nav-links li {
-                margin: 0 4px; /* Zmniejsz odstęp między linkami na najmniejszych ekranach */
+                margin: 6px 0; /* Dostosuj odstęp dla listy pionowej */
             }
             .main-nav .nav-links a {
-                font-size: 0.8em; /* Zmniejsz czcionkę na najmniejszych ekranach */
+                font-size: 1em; /* Dostosuj rozmiar czcionki */
+            }
+            .hamburger-menu .menu-text {
+                font-size: 0.9em;
             }
             /* Adjust scroll anchor for sections on smallest mobile */
             #what-are-cpm-rails,
@@ -790,7 +852,8 @@
     <nav class="main-nav">
         <div class="nav-brand">
             <a href="#hero-section" class="nav-logo-link">
-                <img src="logo.png" alt="Logo Poz-bruk">
+                <img src="logo2
+.png" alt="Logo Poz-bruk">
             </a>
         </div>
         <ul class="nav-links">
@@ -801,7 +864,12 @@
             <li><a href="#contact">Kontakt</a></li>
             <li><a href="#project-configurator">Wizualizator</a></li>
         </ul>
-        <!-- Hamburger menu zostało usunięte zgodnie z prośbą -->
+        <button class="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="menu-text">MENU</span> <!-- Dodano tekst "MENU" -->
+        </button>
     </nav>
     <section id="hero-section">
         <!-- Nagłówek h1 "Poz-bruk" został usunięty -->
@@ -1003,7 +1071,30 @@
                 });
             }
 
-            // --- Project Configurator Logic ---
+            // --- Hamburger Menu Logic ---
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (hamburgerMenu) {
+                hamburgerMenu.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    hamburgerMenu.classList.toggle('active');
+                });
+
+                // Close menu when a link is clicked (for single-page navigation)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('active')) { // Only close if active
+                            navLinks.classList.remove('active');
+                            hamburgerMenu.classList.remove('active');
+                        }
+                    });
+                });
+            }
+            // --- End Hamburger Menu Logic ---
+
+
+            // Project Configurator Logic
             const projectButtons = document.querySelectorAll('.configurator-controls button');
             const projectImage = document.getElementById('project-image');
             const projectDescription = document.getElementById('project-description');
