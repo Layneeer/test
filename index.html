@@ -182,14 +182,14 @@
             opacity: 1; /* Initial opacity, controlled by JS */
             transition: opacity 0.3s ease-out; /* Smooth transition for fading */
             display: flex;
-            justify-content: flex-end; /* Align content to the bottom of the flex container */
+            justify-content: flex-end; /* Always push content to the bottom of the flex container */
             align-items: center; /* Center horizontally */
             flex-direction: column;
             text-align: center;
             color: white; /* Text color for hero content if any */
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow for readability */
-            padding-bottom: 100px; /* Space from the very bottom of the viewport */
-            padding-top: 90px; /* Minimal padding-top, content is pushed down by flex-end */
+            padding-bottom: 100px; /* Default space from the very bottom of the viewport (for desktop) */
+            padding-top: 90px; /* Minimal padding-top, content is pushed down by flex-end (for fixed nav) */
         }
 
         /* Usunięto h1 z sekcji hero */
@@ -627,8 +627,9 @@
                 max-width: 250px;
             }
             #hero-section {
-                height: 80vh; /* Zmniejszona wysokość dla tabletów */
-                padding-top: 40vh; /* Dostosowanie padding-top dla tabletów */
+                height: 100vh; /* Keep full height */
+                padding-bottom: 80px; /* Dostosowanie padding-bottom dla tabletów */
+                padding-top: 70px; /* Dopasowanie do wysokości nav */
             }
             #hero-section .hero-subtitle-box {
                 font-size: 1.2em;
@@ -708,8 +709,9 @@
                 max-width: 150px; /* Smaller logo on mobile */
             }
             #hero-section {
-                height: 70vh; /* Zmniejszona wysokość dla telefonów */
-                padding-top: 35vh; /* Dostosowanie padding-top dla telefonów */
+                height: 100vh; /* Keep full height */
+                padding-bottom: 150px; /* Dostosowanie padding-bottom dla telefonów (w tym iPhone 14 Pro Max) */
+                padding-top: 60px; /* Dopasowanie do wysokości nav */
             }
             #hero-section .hero-subtitle-box {
                 font-size: 1em;
@@ -803,8 +805,9 @@
                 max-width: 100px; /* Even smaller on tiny screens */
             }
             #hero-section {
-                height: 60vh; /* Jeszcze mniejsza wysokość dla małych telefonów */
-                padding-top: 30vh; /* Dostosowanie padding-top dla małych telefonów */
+                height: 100vh; /* Keep full height */
+                padding-bottom: 120px; /* Dostosowanie padding-bottom dla małych telefonów */
+                padding-top: 50px; /* Dopasowanie do wysokości nav */
             }
             #hero-section .hero-subtitle-box {
                 font-size: 0.9em;
