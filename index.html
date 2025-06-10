@@ -173,7 +173,7 @@
 
         /* Hero Section (the large image that fades) */
         #hero-section {
-            height: 70vh; /* Initial height for the hero image */
+            height: 100vh; /* Make hero section full viewport height initially */
             background-image: url('wizytowka.png'); /* Używa obrazu wizytówki w sekcji hero */
             background-size: cover;
             background-position: center;
@@ -182,14 +182,14 @@
             opacity: 1; /* Initial opacity, controlled by JS */
             transition: opacity 0.3s ease-out; /* Smooth transition for fading */
             display: flex;
-            justify-content: flex-start; /* Align content to the top of the flex container */
+            justify-content: flex-end; /* Align content to the bottom of the flex container */
             align-items: center; /* Center horizontally */
             flex-direction: column;
             text-align: center;
             color: white; /* Text color for hero content if any */
             text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow for readability */
-            padding-bottom: 100px; /* Keep some padding at the bottom */
-            padding-top: 60vh; /* Zwiększono do 60vh, aby przesunąć content jeszcze niżej */
+            padding-bottom: 100px; /* Space from the very bottom of the viewport */
+            padding-top: 90px; /* Minimal padding-top, content is pushed down by flex-end */
         }
 
         /* Usunięto h1 z sekcji hero */
@@ -198,7 +198,7 @@
             background-color: rgba(255, 255, 255, 0.85); /* White with some transparency */
             padding: 15px 30px;
             border-radius: 10px;
-            margin-top: 0; /* Usunięto margin-top, aby content opierał się na padding-bottom */
+            margin-top: 0; /* Controlled by flexbox */
             margin-bottom: 30px; /* Space between box and button */
             max-width: 80%; /* Limit width */
             width: fit-content; /* Adjust to content */
@@ -436,11 +436,11 @@
         .hidden-section {
             opacity: 0;
             transform: translateY(60px);
+            transition: opacity 1s ease-out, transform 1s ease-out; /* Re-add transition to hidden state for smooth disappearance */
         }
         .show-section {
             opacity: 1;
             transform: translateY(0);
-            transition: opacity 1s ease-out, transform 1s ease-out; /* Only animate when showing */
         }
 
         /* Fixed Contact Arrow */
@@ -627,7 +627,8 @@
                 max-width: 250px;
             }
             #hero-section {
-                padding-top: 70px; /* Match nav height */
+                height: 80vh; /* Zmniejszona wysokość dla tabletów */
+                padding-top: 40vh; /* Dostosowanie padding-top dla tabletów */
             }
             #hero-section .hero-subtitle-box {
                 font-size: 1.2em;
@@ -707,7 +708,8 @@
                 max-width: 150px; /* Smaller logo on mobile */
             }
             #hero-section {
-                padding-top: 60px; /* Match nav height */
+                height: 70vh; /* Zmniejszona wysokość dla telefonów */
+                padding-top: 35vh; /* Dostosowanie padding-top dla telefonów */
             }
             #hero-section .hero-subtitle-box {
                 font-size: 1em;
@@ -801,7 +803,8 @@
                 max-width: 100px; /* Even smaller on tiny screens */
             }
             #hero-section {
-                padding-top: 50px; /* Match nav height */
+                height: 60vh; /* Jeszcze mniejsza wysokość dla małych telefonów */
+                padding-top: 30vh; /* Dostosowanie padding-top dla małych telefonów */
             }
             #hero-section .hero-subtitle-box {
                 font-size: 0.9em;
