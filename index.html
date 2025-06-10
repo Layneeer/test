@@ -60,7 +60,7 @@
             display: flex;
             align-items: center;
             flex-shrink: 0; /* Prevent shrinking on smaller screens */
-            /* margin-right: 20px; to zostanie obsłużone przez flex-grow na nav-links */
+            margin-right: 20px; /* Odstęp od menu */
         }
 
         .main-nav .nav-brand .nav-logo-link img {
@@ -71,13 +71,13 @@
         }
 
         .main-nav .nav-links {
-            display: flex;
+            display: flex; /* Zawsze flex dla układu poziomego */
             list-style: none;
             margin: 0; /* Reset margin */
             padding: 0;
             flex-grow: 1; /* Rozciągnij, aby zająć dostępną przestrzeń */
             justify-content: center; /* Wyśrodkuj elementy li wewnątrz nav-links */
-            align-items: center; /* Wyśrodkuj elementy w pionie */
+            white-space: nowrap; /* Zapobiegaj zawijaniu linków */
         }
 
         .main-nav .nav-links li {
@@ -92,7 +92,6 @@
             padding: 5px 0;
             position: relative;
             transition: color 0.3s ease;
-            white-space: nowrap; /* Prevent link text wrapping */
         }
 
         .main-nav .nav-links a::after { /* Underline effect */
@@ -110,36 +109,38 @@
             width: 100%;
         }
 
-        /* Hamburger Menu (Hidden by default on desktop) */
+        /* Hamburger Menu */
         .hamburger-menu {
-            display: none; /* Hidden by default on desktop */
-            flex-direction: row; /* Kreski i tekst w rzędzie */
-            align-items: center; /* Wyśrodkuj w pionie */
-            justify-content: flex-end; /* Wyrównaj do prawej w kontenerze nav */
-            width: auto; /* Szerokość dostosowuje się do zawartości */
+            display: none; /* Ukryte domyślnie na desktopie */
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
             height: 25px;
             background: transparent;
             border: none;
             cursor: pointer;
             padding: 0;
             z-index: 1001; /* Above nav links when active */
-            margin-left: auto; /* Odsunięcie od menu, aby był na prawej krawędzi */
+            margin-left: 20px; /* Odstęp od menu */
         }
 
         .hamburger-menu .bar {
-            width: 30px;
+            width: 100%;
             height: 3px;
             background-color: #34495e;
             border-radius: 10px;
             transition: all 0.3s ease;
-            margin-right: 8px; /* Odstęp między kreskami a tekstem */
         }
         .hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
         .hamburger-menu.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         .hamburger-menu .menu-text {
-            display: none; /* Ukryj tekst na desktopie */
+            color: #34495e;
+            font-size: 1.1em;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 8px; /* Odstęp między kreskami a tekstem */
         }
 
         /* Hero Section (the large image that fades) */
@@ -163,20 +164,13 @@
             padding-top: 90px; /* Adjust padding to push content below fixed navigation */
         }
 
-        #hero-section h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4em;
-            margin-bottom: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
+        /* Usunięto h1 z sekcji hero */
 
         #hero-section .hero-subtitle-box { /* White rectangle for subtitle */
             background-color: rgba(255, 255, 255, 0.85); /* White with some transparency */
             padding: 15px 30px;
             border-radius: 10px;
-            margin-top: 15px; /* Space between h1 and box */
+            margin-top: 15px; /* Space between h1 and box (teraz powyżej pustego miejsca) */
             margin-bottom: 30px; /* Space between box and button */
             max-width: 80%; /* Limit width */
             width: fit-content; /* Adjust to content */
@@ -191,25 +185,21 @@
             margin: 0; /* Remove default paragraph margin */
         }
 
-        /* Hero section action button */
-        .action-button,
-        .action-button:hover,
-        .action-button:visited { /* Zapewnienie stałego białego koloru */
-            color: #ffffff;
-            background-color: #28a745; /* Green color matching contact arrow */
-            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Green shadow */
+        /* Hero section action button - Zmieniono kolor na zielony i usunięto niebieskie podświetlenie */
+        #hero-section .action-button {
+            background-color: #28a745; /* Zmieniono na zielony */
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Zmieniono na zielony cień */
             margin-top: 0; /* Adjusted margin, controlled by hero-subtitle-box */
-            display: inline-block;
-            padding: 18px 40px;
-            font-size: 1.5em;
-            text-decoration: none;
-            border-radius: 50px;
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-decoration: none; /* Explicitly remove default underline */
+            position: relative; /* Potrzebne, jeśli w przyszłości będzie ::after */
         }
-        .action-button:hover {
-            background-color: #218838; /* Darker green on hover */
+        /* Specyficzna zasada, aby wyłączyć ::after dla tego przycisku, jeśli by się pojawiał */
+        #hero-section .action-button::after {
+            content: none; /* Usuń pseudo-element */
+        }
+
+        #hero-section .action-button:hover {
+            background-color: #218838; /* Ciemniejszy zielony na hover */
             transform: translateY(-3px);
             box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
         }
@@ -322,6 +312,100 @@
             font-size: 1.3em;
             color: #dc3545;
             padding: 10px 0;
+        }
+
+        /* Buttons and Links (General - not hero button) */
+        .action-button {
+            display: inline-block;
+            background-color: #007bff; /* Default blue for other buttons */
+            color: #ffffff;
+            padding: 18px 40px;
+            font-size: 1.5em;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 700;
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+        }
+        .action-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #f2f2f2;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 60px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        #contact p {
+            margin-bottom: 15px;
+            font-size: 1.15em;
+            color: #333333;
+        }
+        #contact h2 {
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        /* Image Placeholders (Generic) */
+        .image-placeholder {
+            width: 100%;
+            max-width: 700px;
+            height: 350px;
+            background-color: #e9ecef;
+            margin: 40px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888888;
+            font-size: 1.6em;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 60px;
+            border-top: 1px solid #e9ecef;
+            font-size: 0.9em;
+            color: #888888;
+        }
+
+        /* Scroll Animation Styles */
+        .hidden-section {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .show-section {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Fixed Contact Arrow */
@@ -506,9 +590,6 @@
             #hero-section {
                 padding-top: 70px; /* Match nav height */
             }
-            #hero-section h1 {
-                font-size: 3em;
-            }
             #hero-section .hero-subtitle-box {
                 font-size: 1.2em;
             }
@@ -525,10 +606,23 @@
                 margin: 20px auto;
                 padding: 25px;
             }
-            /* Tablet/Mobile specific navigation */
+            .image-placeholder {
+                height: 300px;
+            }
+            #special-image-section .special-image {
+                height: 250px;
+            }
+            #project-configurator {
+                padding: 30px;
+            }
+            .configurator-image-container {
+                height: 300px;
+            }
+
+            /* Tablet/Mobile specific navigation - hamburger menu */
             .main-nav .nav-links {
                 display: none; /* Hide nav links by default on smaller screens */
-                flex-direction: column;
+                flex-direction: column; /* Revert to column for mobile dropdown */
                 position: absolute;
                 top: 70px; /* Below nav bar height */
                 left: 0;
@@ -541,7 +635,7 @@
                 overflow-y: auto;
                 gap: 0; /* No gap for column layout */
                 margin: 0; /* Reset margins for column layout */
-                align-items: center; /* Wyśrodkuj elementy li w kolumnie */
+                justify-content: flex-start; /* Reset justify-content for column layout */
             }
             .main-nav .nav-links.active { /* Show when hamburger is active */
                 display: flex;
@@ -556,25 +650,20 @@
                 display: block; /* Make link full width */
             }
             .hamburger-menu {
-                display: flex; /* Show hamburger and text on mobile */
-                justify-content: flex-end; /* Wyrównaj do prawej */
+                display: flex; /* Show hamburger */
+                flex-direction: row; /* Align bars and text horizontally */
+                align-items: center; /* Vertically center bars and text */
+                gap: 8px; /* Space between bars and text */
+                padding-right: 10px; /* Keep some padding from the right edge */
+                width: auto; /* Allow button to shrink/grow with content */
+                height: auto; /* Allow button to shrink/grow with content */
             }
             .hamburger-menu .menu-text {
-                display: block; /* Pokaż tekst na mobile */
                 color: #34495e;
                 font-size: 1.1em;
                 font-weight: 600;
-            }
-
-            /* Adjust scroll anchor for sections on tablet/mobile */
-            #what-are-cpm-rails,
-            #benefits,
-            #indications,
-            #pricelist,
-            #contact,
-            #special-image-section,
-            #project-configurator {
-                scroll-margin-top: 70px; /* Adjust for smaller nav height */
+                white-space: nowrap; /* Prevent text wrapping */
+                margin-left: 0; /* Reset margin for mobile */
             }
         }
 
@@ -588,9 +677,6 @@
             }
             #hero-section {
                 padding-top: 60px; /* Match nav height */
-            }
-            #hero-section h1 {
-                font-size: 2.5em;
             }
             #hero-section .hero-subtitle-box {
                 font-size: 1em;
@@ -608,16 +694,57 @@
                 margin: 15px;
                 padding: 20px;
             }
-            .hamburger-menu {
-                height: 20px; /* Mniejsza wysokość hamburgera */
+            .action-button {
+                padding: 15px 30px;
+                font-size: 1.3em;
             }
-            .hamburger-menu .bar {
-                width: 25px; /* Mniejsza szerokość kreski */
-                margin-right: 6px; /* Mniejszy odstęp */
+            ul li {
+                padding-left: 0;
+                font-size: 1em;
+            }
+            .image-placeholder {
+                height: 250px;
+                margin: 30px auto;
+            }
+            .contact-arrow {
+                right: -5px;
+                padding: 12px 10px;
+                font-size: 0.9em;
+            }
+            .contact-arrow:hover {
+                transform: translateY(-50%) translateX(-10px);
+            }
+            #special-image-section {
+                padding: 40px 20px;
+                margin-top: 50px;
+            }
+            #special-image-section h3 {
+                font-size: 1.8em;
+            }
+            #special-image-section .special-image {
+                height: 200px;
+            }
+            #project-configurator {
+                padding: 20px;
+            }
+            .configurator-image-container {
+                height: 250px;
+            }
+            .configurator-controls button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            /* Tablet/Mobile specific navigation - hamburger menu */
+            .main-nav .nav-links li {
+                margin: 8px 0; /* Dostosuj odstęp dla listy pionowej */
+            }
+            .main-nav .nav-links a {
+                font-size: 1.1em; /* Dostosuj rozmiar czcionki */
             }
             .hamburger-menu .menu-text {
-                font-size: 1em; /* Mniejszy rozmiar tekstu */
+                font-size: 1em;
             }
+
             /* Adjust scroll anchor for sections on smaller mobile */
             #what-are-cpm-rails,
             #benefits,
@@ -640,10 +767,6 @@
             }
             #hero-section {
                 padding-top: 50px; /* Match nav height */
-            }
-            #hero-section h1 {
-                font-size: 2em;
-                letter-spacing: 1px;
             }
             #hero-section .hero-subtitle-box {
                 font-size: 0.9em;
@@ -697,9 +820,15 @@
                 padding: 8px 15px;
                 font-size: 0.9em;
             }
-            .main-nav .nav-links {
-                top: 50px; /* Below nav bar height */
-                max-height: calc(100vh - 50px);
+            /* Tablet/Mobile specific navigation - hamburger menu */
+            .main-nav .nav-links li {
+                margin: 6px 0; /* Dostosuj odstęp dla listy pionowej */
+            }
+            .main-nav .nav-links a {
+                font-size: 1em; /* Dostosuj rozmiar czcionki */
+            }
+            .hamburger-menu .menu-text {
+                font-size: 0.9em;
             }
             /* Adjust scroll anchor for sections on smallest mobile */
             #what-are-cpm-rails,
@@ -738,11 +867,11 @@
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-            <span class="menu-text">MENU</span> <!-- Dodany tekst "MENU" -->
+            <span class="menu-text">MENU</span> <!-- Dodano tekst "MENU" -->
         </button>
     </nav>
     <section id="hero-section">
-        <h1>Poz-bruk</h1>
+        <!-- Nagłówek h1 "Poz-bruk" został usunięty -->
         <div class="hero-subtitle-box"> <p>Profesjonalizm i doświadczenie w układaniu kostki brukowej.</p>
         </div>
         <a href="#contact" class="action-button">Darmowa wycena!</a>
