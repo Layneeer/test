@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poz-bruk - Kostka Brukowa, Układanie Kostki, Brukarstwo Tychy i Śląsk</title>
-    <meta name="description" content="Profesjonalne usługi brukarskie w Tychach i na Śląsku. Układanie kostki brukowej, tarasy, podjazdy, chodniki. Poz-bruk to gwarancja jakości i trwałości. Skontaktuj się po bezpłatną wycenę!">
-    <meta name="keywords" content="kostka brukowa, układanie kostki, bruk, brukarstwo, poz-bruk, Tychy, Śląsk, podjazdy, tarasy, chodniki, nawierzchnie, firma brukarska, wycena kostki">
+    <title>Mosina-bruk - Kostka Brukowa Mosina, Układanie Kostki Wielkopolska i Okolice</title>
+    <meta name="description" content="Profesjonalne układanie kostki brukowej w Mosinie i okolicach Wielkopolski. Oferujemy usługi brukarskie, tarasy, podjazdy, chodniki. Mosina-bruk to gwarancja jakości i trwałości. Skontaktuj się po bezpłatną wycenę w Mosinie, Luboniu, Kórniku i Poznaniu!">
+    <meta name="keywords" content="kostka brukowa Mosina, układanie kostki Wielkopolska, bruk Mosina, brukarstwo Mosina, mosina-bruk, Poznań układanie kostki, Luboń brukarstwo, Kórnik kostka, podjazdy Mosina, tarasy Mosina, chodniki Mosina, nawierzchnie Mosina, firma brukarska Mosina, wycena kostki Mosina, brukarz Mosina">
     <meta name="robots" content="index, follow">
     <link rel="icon" href="_assets/images/3e77f8b1031b1c0f947ef1b9b3247ad6.png" sizes="192x192">
     <link rel="apple-touch-icon" href="_assets/images/6c0784fb6ee41f824ce2e50c3bfda591.png" sizes="180x180">
@@ -43,6 +43,7 @@
             height: 100vh;
             overflow: hidden;
             z-index: -2;
+            /* Używamy oryginalnego obrazka wizytówki jako globalnego tła */
             background-image: url('tlo.png');
             background-size: cover;
             background-position: center;
@@ -175,6 +176,7 @@
         #hero-section {
             height: 100vh;
             min-height: 100vh;
+            /* Zmieniono nazwę pliku tła dla sekcji hero */
             background-image: url('wizytowka.png');
             background-size: cover;
             background-position: center;
@@ -648,7 +650,7 @@
         /* Gallery/Portfolio specific styles */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for larger screens */
             gap: 20px;
             margin-top: 30px;
         }
@@ -724,14 +726,14 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start; /* Align items to the top (start) of the column */
-            /* Removed fixed max-height and overflow from here for desktop, will add in media query */
         }
 
         .lightbox-content img {
             max-width: 100%;
             height: auto; /* Allow image to scale naturally */
             display: block;
-            margin: 0 auto 20px auto;
+            margin: 0; /* Remove auto horizontal margin, and all vertical margin. */
+            margin-bottom: 20px; /* Add specific bottom margin to separate from text */
             border-radius: 8px;
             object-fit: contain;
         }
@@ -912,6 +914,13 @@
                 max-height: 95vh; /* Limit modal content height */
                 overflow-y: auto; /* Allow vertical scrolling within modal */
             }
+            .gallery-grid { /* For tablets and larger phones */
+                grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+                gap: 15px; /* Slightly smaller gap */
+            }
+            .gallery-item img {
+                height: 180px; /* Slightly smaller height for grid items */
+            }
         }
 
         @media (max-width: 768px) {
@@ -992,6 +1001,13 @@
             }
             .lightbox-content p {
                 font-size: 0.9em;
+            }
+            .gallery-grid { /* For most phones in portrait */
+                grid-template-columns: repeat(2, 1fr); /* Ensure 2 columns */
+                gap: 10px; /* Even smaller gap */
+            }
+            .gallery-item img {
+                height: 140px; /* Further reduce height for grid items */
             }
         }
 
@@ -1090,6 +1106,13 @@
             #uslugi, #dlaczego-my, #realizacje, #cennik, #contact, #special-image-section, #location-section {
                 scroll-margin-top: 50px;
             }
+            .gallery-grid { /* For very small phones */
+                grid-template-columns: repeat(2, 1fr); /* Still 2 columns */
+                gap: 8px; /* Smallest gap */
+            }
+            .gallery-item img {
+                height: 100px; /* Significantly reduced height for very small screens */
+            }
         }
     </style>
 </head>
@@ -1101,7 +1124,9 @@
     <nav class="main-nav">
         <div class="nav-brand">
             <a href="#hero-section" class="nav-logo-link">
-                <img src="logo2.png" alt="Logo Poz-bruk">
+                <!-- Zmieniono src logo na uniwersalny placeholder, aby uniknąć problemów z nałożeniem tekstu. -->
+                <!-- ZASTĄP TEN LINK ŚCIEŻKĄ DO SWOJEGO LOGO PNG MOSINA-BRUK -->
+                <img src="logo2.png" alt="Logo Mosina-bruk - układanie kostki brukowej w Mosinie i Wielkopolsce">
             </a>
         </div>
         <ul class="nav-links">
@@ -1119,36 +1144,36 @@
             <span class="menu-text">MENU</span> </button>
     </nav>
     <section id="hero-section">
-        <div class="hero-subtitle-box"> <p>Profesjonalizm i doświadczenie w układaniu kostki brukowej.</p>
+        <div class="hero-subtitle-box"> <p>Profesjonalizm i doświadczenie w układaniu kostki brukowej w Mosinie i okolicach.</p>
         </div>
         <a href="#contact" class="action-button">Darmowa wycena!</a>
-        <a href="#uslugi" class="scroll-down-arrow" aria-label="Przewiń do sekcji Usługi">&darr;</a> <!-- Strzałka do przewijania -->
+        <a href="#uslugi" class="scroll-down-arrow" aria-label="Przewiń do sekcji Usługi">&darr;</a>
     </section>
 
     <div class="container">
         <hr>
 
         <section id="uslugi" class="hidden-section">
-            <h2>Nasze Usługi Brukarskie</h2>
+            <h2>Nasze Usługi Brukarskie w Mosinie i Wielkopolsce</h2>
             <div class="image-placeholder">
-                <img src="https://placehold.co/700x350/e9ecef/888888?text=Układanie+Kostki" alt="Zdjęcie przedstawiające układanie kostki brukowej" loading="lazy">
+                <img src="https://placehold.co/700x350/e9ecef/888888?text=Układanie+Kostki+Brukowej+Mosina" alt="Zdjęcie przedstawiające układanie kostki brukowej w Mosinie" loading="lazy">
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Firma Mosina-bruk oferuje kompleksowe usługi w zakresie układania kostki brukowej dla klientów indywidualnych i firmowych na terenie Mosiny oraz całej Wielkopolski. Specjalizujemy się w realizacji projektów od małych podjazdów po rozległe powierzchnie użytkowe.</p>
+            <p>Nasze usługi obejmują przygotowanie terenu, profesjonalne doradztwo w wyborze materiałów, precyzyjne układanie kostki, a także montaż systemów odwodnienia i obrzeży. Zapewniamy trwałe i estetyczne rozwiązania na lata.</p>
         </section>
 
         <hr>
 
         <section id="dlaczego-my" class="hidden-section">
-            <h2>Dlaczego Wybrać Poz-bruk?</h2>
+            <h2>Dlaczego Wybrać Mosina-bruk?</h2>
             <div class="image-placeholder">
-                <img src="https://placehold.co/700x350/e9ecef/888888?text=Jakość+i+Doświadczenie" alt="Ilustracja jakości i doświadczenia w brukarstwie" loading="lazy">
+                <img src="https://placehold.co/700x350/e9ecef/888888?text=Jakość+i+Doświadczenie+Mosina-bruk" alt="Ilustracja jakości i doświadczenia Mosina-bruk" loading="lazy">
             </div>
             <ul>
-                <li><strong>Doświadczenie i Profesjonalizm:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li><strong>Indywidualne Podejście:</strong> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-                <li><strong>Terminowość i Precyzja:</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><strong>Konkurencyjne Ceny:</strong> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                <li><strong>Doświadczenie i Profesjonalizm:</strong> Ponad X lat doświadczenia w branży brukarskiej w Mosinie i okolicach gwarantuje najwyższą jakość usług.</li>
+                <li><strong>Indywidualne Podejście:</strong> Każdy projekt traktujemy z najwyższą starannością, dopasowując rozwiązania do indywidualnych potrzeb i oczekiwań klienta.</li>
+                <li><strong>Terminowość i Precyzja:</strong> Realizujemy zlecenia zgodnie z ustalonym harmonogramem, dbając o każdy, nawet najmniejszy detal wykonania.</li>
+                <li><strong>Konkurencyjne Ceny:</strong> Oferujemy atrakcyjne ceny przy zachowaniu najwyższych standardów jakości usług układania kostki brukowej w Mosinie.</li>
             </ul>
         </section>
 
@@ -1156,8 +1181,8 @@
 
         <!-- Dynamiczna Galeria/Portfolio -->
         <section id="realizacje" class="hidden-section">
-            <h2>Nasze Realizacje</h2>
-            <p>Zapoznaj się z wybranymi projektami, które zrealizowaliśmy z pasją i precyzją. Kliknij na zdjęcie, aby zobaczyć więcej szczegółów!</p>
+            <h2>Nasze Realizacje w Mosinie i Okolicach</h2>
+            <p>Zapoznaj się z wybranymi projektami, które zrealizowaliśmy z pasją i precyzją na terenie Mosiny, Lubonia, Kórnika i innych miejscowości w Wielkopolsce. Kliknij na zdjęcie, aby zobaczyć więcej szczegółów!</p>
 
             <div class="gallery-grid" id="gallery-grid">
                 <!-- Gallery items will be dynamically loaded by JavaScript -->
@@ -1168,7 +1193,6 @@
                 <div class="lightbox-content">
                     <button class="lightbox-close" aria-label="Zamknij galerię">&times;</button>
                     <img id="lightbox-image" src="" alt="">
-                    <!-- Usunięto tag h3 do wyświetlania tytułu, zgodnie z prośbą -->
                     <p id="lightbox-description"></p>
                     <button class="lightbox-nav-button lightbox-prev" aria-label="Poprzedni projekt">&lsaquo;</button>
                     <button class="lightbox-nav-button lightbox-next" aria-label="Następny projekt">&rsaquo;</button>
@@ -1179,7 +1203,7 @@
         <hr>
 
         <section id="cennik" class="hidden-section">
-            <h2>Przykładowy Cennik Usług</h2>
+            <h2>Przykładowy Cennik Usług Brukarskich w Mosinie</h2>
             <table>
                 <thead>
                     <tr>
@@ -1191,65 +1215,66 @@
                 <tbody>
                     <tr>
                         <td>Układanie kostki (standard)</td>
-                        <td>Lorem</td>
-                        <td>Ipsum dolor</td>
+                        <td>od 30-50 PLN/m²</td>
+                        <td>Cena zależy od skomplikowania wzoru i rodzaju kostki</td>
                     </tr>
                     <tr>
                         <td>Przygotowanie podłoża</td>
-                        <td>Sit amet</td>
-                        <td>Consectetur</td>
+                        <td>od 20-40 PLN/m²</td>
+                        <td>Wykopy, podbudowa, zagęszczanie</td>
                     </tr>
                     <tr>
                         <td>Obrzeża i krawężniki</td>
-                        <td>Adipiscing</td>
-                        <td>Elit</td>
+                        <td>od 15-25 PLN/mb</td>
+                        <td>Montaż wraz z zabetonowaniem</td>
                     </tr>
                     <tr>
                         <td>Montaż odwodnienia</td>
-                        <td>Tempor</td>
-                        <td>Incididunt</td>
+                        <td>Indywidualna</td>
+                        <td>W zależności od rodzaju i długości systemu</td>
                     </tr>
                     <tr>
                         <td>Specjalne wzory</td>
-                        <td>Ut labore</td>
-                        <td>Et dolore</td>
+                        <td>Indywidualna</td>
+                        <td>Wycena po konsultacji i projekcie</td>
                     </tr>
                 </tbody>
             </table>
-            <p class="note"><strong>Indywidualna wycena po oględzinach terenu!</strong></p>
+            <p class="note"><strong>Indywidualna wycena po oględzinach terenu w Mosinie i okolicach!</strong></p>
         </section>
 
         <hr>
 
         <section id="special-image-section" class="hidden-section">
-            <h3>Zrealizuj swój projekt z Poz-bruk!</h3>
+            <h3>Zrealizuj swój projekt z Mosina-bruk!</h3>
             <div class="special-image">
-                <img src="https://placehold.co/500x300/e0eafc/999999?text=Projekt+Twoich+Marzeń" alt="Wizualizacja nowoczesnego podjazdu z kostki brukowej" loading="lazy">
+                <img src="https://placehold.co/500x300/e0eafc/999999?text=Brukarstwo+Mosina" alt="Wizualizacja nowoczesnego podjazdu z kostki brukowej w Mosinie" loading="lazy">
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Nie czekaj, aby odmienić wygląd swojej posesji w Mosinie lub okolicach! Zespół Mosina-bruk jest gotowy, aby sprostać każdemu wyzwaniu i stworzyć trwałą i piękną nawierzchnię dopasowaną do Twoich potrzeb.</p>
             <a href="#contact" class="action-button">Poproś o wycenę</a>
         </section>
 
         <hr>
 
         <section id="contact" class="hidden-section">
-            <h2>Kontakt</h2>
-            <p>Masz pytania lub chcesz umówić się na bezpłatną wycenę?</p>
-            <p>Skontaktuj się z nami!</p>
+            <h2>Kontakt Mosina-bruk</h2>
+            <p>Masz pytania dotyczące układania kostki brukowej w Mosinie, Luboniu, Kórniku czy Poznaniu?</p>
+            <p>Skontaktuj się z nami po bezpłatną wycenę!</p>
             <p>Telefon: <a href="tel:+48123456789">+48 123 456 789</a></p>
-            <p>Email: <a href="mailto:kontakt@pozbruk.pl">kontakt@pozbruk.pl</a></p>
-            <p>Adres: Tychy, ul. Brukowa 15</p>
+            <p>Email: <a href="mailto:kontakt@mosina-bruk.pl">kontakt@mosina-bruk.pl</a></p>
+            <p>Adres: Mosina, ul. Brukowa 15</p>
         </section>
 
         <hr>
         <section id="location-section" class="hidden-section">
-            <h2>Nasza Lokalizacja</h2>
-            <p>Znajdź nas tutaj i sprawdź, czy dojeżdżamy do Twojej miejscowości!</p>
+            <h2>Nasza Lokalizacja i Obszar Działania - Mosina-bruk</h2>
+            <p>Znajdź nas tutaj w Mosinie! Obsługujemy klientów z Mosiny i szerokich okolic Wielkopolski.</p>
             <div class="map-container">
                 <iframe src="https://www.google.com/maps?q=Mosina%2C+Orzeszkowej+5&z=16&output=embed" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <h3>Dojeżdżamy do okolicznych miast:</h3>
+            <h3>Dojeżdżamy do okolicznych miast i miejscowości w Wielkopolsce:</h3>
             <ul>
+                <li>Mosina</li>
                 <li>Poznań</li>
                 <li>Luboń</li>
                 <li>Kórnik</li>
@@ -1257,19 +1282,25 @@
                 <li>Komorniki</li>
                 <li>Śrem</li>
                 <li>Stęszew</li>
+                <li>Puszczykowo</li>
+                <li>Czapury</li>
+                <li>Dąbrowa</li>
+                <li>Głuszyna</li>
+                <li>Wiry</li>
+                <li>Pecna</li>
             </ul>
         </section>
 
         <footer>
-            <p>&copy; 2025 Poz-bruk. Wszelkie prawa zastrzeżone.</p>
+            <p>&copy; 2025 Mosina-bruk. Wszelkie prawa zastrzeżone.</p>
         </footer>
     </div>
 
-    <a href="#contact" class="contact-arrow" aria-label="Skontaktuj się z nami">
+    <a href="#contact" class="contact-arrow" aria-label="Skontaktuj się z Mosina-bruk">
         Kontakt
     </a>
 
-    <a href="tel:+48123456789" class="mobile-call-button" aria-label="Zadzwoń do nas">
+    <a href="tel:+48123456789" class="mobile-call-button" aria-label="Zadzwoń do Mosina-bruk">
         📞
     </a>
 
@@ -1338,39 +1369,39 @@
 
             const galleryData = [
                 {
-                    thumb: "https://placehold.co/700x200/a3ccf1/ffffff?text=Miniatura+Podjazdu",
-                    full: "https://placehold.co/1000x600/a3ccf1/ffffff?text=Projekt+Podjazdu",
-                    title: "Nowoczesny Podjazd",
-                    description: "Realizacja podjazdu z eleganckiej kostki brukowej. Połączenie funkcjonalności z nowoczesnym designem. Projekt wykonany z dbałością o każdy detal, zapewniający trwałość i estetykę na lata."
+                    thumb: "https://placehold.co/700x200/a3ccf1/ffffff?text=Mosina-bruk:+Podjazd+Nowoczesny",
+                    full: "https://placehold.co/1000x600/a3ccf1/ffffff?text=Mosina-bruk:+Podjazd+Nowoczesny",
+                    title: "Nowoczesny Podjazd w Mosinie",
+                    description: "Realizacja podjazdu z eleganckiej kostki brukowej w Mosinie. Połączenie funkcjonalności z nowoczesnym designem. Projekt wykonany z dbałością o każdy detal, zapewniający trwałość i estetykę na lata."
                 },
                 {
-                    thumb: "https://placehold.co/700x200/f1a3a3/ffffff?text=Miniatura+Tarasy",
-                    full: "https://placehold.co/1000x600/f1a3a3/ffffff?text=Projekt+Tarasy",
-                    title: "Tarasy Ogrodowe",
+                    thumb: "https://placehold.co/700x200/f1a3a3/ffffff?text=Mosina-bruk:+Tarasy+Ogrodowe",
+                    full: "https://placehold.co/1000x600/f1a3a3/ffffff?text=Mosina-bruk:+Tarasy+Ogrodowe",
+                    title: "Tarasy Ogrodowe w Okolicach Mosiny",
                     description: "Stworzenie przestronnych tarasów ogrodowych idealnych do relaksu. Wykorzystano wysokiej jakości kostkę, która harmonijnie współgra z otoczeniem, tworząc spójną całość."
                 },
                 {
-                    thumb: "https://placehold.co/700x200/a3f1b0/ffffff?text=Miniatura+Ścieżki",
-                    full: "https://placehold.co/1000x600/a3f1b0/ffffff?text=Projekt+Ścieżki",
-                    title: "Malownicza Ścieżka",
+                    thumb: "https://placehold.co/700x200/a3f1b0/ffffff?text=Mosina-bruk:+Malownicza+Sciezka",
+                    full: "https://placehold.co/1000x600/a3f1b0/ffffff?text=Mosina-bruk:+Malownicza+Sciezka",
+                    title: "Malownicza Ścieżka Brukowa",
                     description: "Projekt i wykonanie krętej ścieżki w ogrodzie, prowadzącej przez zielone zakątki. Zapewnia komfort użytkowania i dodaje uroku krajobrazowi. Idealne rozwiązanie do ogrodu."
                 },
                 {
-                    thumb: "https://placehold.co/700x200/e6a3f1/ffffff?text=Miniatura+Parking",
-                    full: "https://placehold.co/1000x600/e6a3f1/ffffff?text=Projekt+Parking",
-                    title: "Parking Firmowy",
+                    thumb: "https://placehold.co/700x200/e6a3f1/ffffff?text=Mosina-bruk:+Parking+Firmowy",
+                    full: "https://placehold.co/1000x600/e6a3f1/ffffff?text=Mosina-bruk:+Parking+Firmowy",
+                    title: "Parking Firmowy - Realizacja w Wielkopolsce",
                     description: "Kompleksowe wykonanie parkingu z kostki brukowej dla firmy. Zapewnia trwałą i estetyczną nawierzchnię, odporną na intensywne użytkowanie. Projekt dostosowany do potrzeb klienta."
                 },
                 {
-                    thumb: "https://placehold.co/700x200/f1e6a3/ffffff?text=Miniatura+Schody",
-                    full: "https://placehold.co/1000x600/f1e6a3/ffffff?text=Projekt+Schody",
-                    title: "Schody z Kostki",
+                    thumb: "https://placehold.co/700x200/f1e6a3/ffffff?text=Mosina-bruk:+Schody+z+Kostki",
+                    full: "https://placehold.co/1000x600/f1e6a3/ffffff?text=Mosina-bruk:+Schody+z+Kostki",
+                    title: "Schody z Kostki Brukowej",
                     description: "Realizacja eleganckich schodów prowadzących do wejścia budynku. Połączenie różnych rodzajów kostki stworzyło unikalny wzór, który podkreśla charakter nieruchomości."
                 },
                 {
-                    thumb: "https://placehold.co/700x200/a3f1e6/ffffff?text=Miniatura+Renowacja",
-                    full: "https://placehold.co/1000x600/a3f1e6/ffffff?text=Projekt+Renowacja",
-                    title: "Renowacja Nawierzchni",
+                    thumb: "https://placehold.co/700x200/a3f1e6/ffffff?text=Mosina-bruk:+Renowacja+Nawierzchni",
+                    full: "https://placehold.co/1000x600/a3f1e6/ffffff?text=Mosina-bruk:+Renowacja+Nawierzchni",
+                    title: "Renowacja Nawierzchni Brukowej",
                     description: "Kompleksowa renowacja starej, zniszczonej nawierzchni brukowej. Przywróciliśmy jej pierwotny blask i funkcjonalność, wykorzystując nowoczesne techniki czyszczenia i uzupełniania ubytków."
                 }
             ];
