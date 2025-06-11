@@ -13,41 +13,41 @@
     <style>
         /* Global Reset / Base */
         * {
-            box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+            box-sizing: border-box;
         }
-        img { /* Global responsive image rule */
+        img {
             max-width: 100%;
             height: auto;
-            display: block; /* Removes extra space below image */
+            display: block;
         }
 
         /* General Body and Container Styles */
         body {
-            font-family: 'Lato', Arial, sans-serif; /* Readable body font */
-            line-height: 1.8; /* Increased line height for better readability */
+            font-family: 'Lato', Arial, sans-serif;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa; /* Fallback background color, visible when dynamic background fades */
-            color: #4a4a4a; /* Dark grey for main text */
-            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            position: relative; /* For z-indexing of other elements */
+            background-color: #f8f9fa;
+            color: #4a4a4a;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            position: relative;
         }
 
         /* Global Fixed Background Image Container */
         .global-background-image-container {
-            position: fixed; /* Fixed so it covers the entire viewport */
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            overflow: hidden; /* Hide any overflow of the image itself */
-            z-index: -2; /* Send it to the very back, behind content and hero section */
-            background-image: url('tlo.png'); /* Obrazek tła wizytówki */
-            background-size: cover; /* Pokryj cały kontener */
-            background-position: center; /* Wyśrodkuj obraz */
-            background-repeat: no-repeat; /* Zapobiegaj powtarzaniu */
-            filter: grayscale(80%) brightness(1.1) opacity(0.25) blur(3px); /* Dodano blur(3px) z powrotem */
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -2;
+            background-image: url('tlo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: grayscale(80%) brightness(1.1) opacity(0.25) blur(3px);
         }
 
         /* --- Main Navigation Bar --- */
@@ -56,61 +56,61 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000; /* High z-index to be above content */
+            z-index: 1000;
             display: flex;
-            justify-content: center; /* Default: centered for mobile-first approach */
+            justify-content: center;
             align-items: center;
-            padding: 10px 20px; /* Zwiększono padding poziomy dla lepszego dopasowania */
-            height: 90px; /* Fixed height for consistent spacing, adjusted for larger logo */
+            padding: 10px 20px;
+            height: 90px;
             transition: background-color 0.3s ease;
         }
 
-        @media (min-width: 993px) { /* Desktop only */
+        @media (min-width: 993px) {
             .main-nav {
-                justify-content: space-between; /* Space out logo and menu on desktop */
+                justify-content: space-between;
             }
             .main-nav .nav-brand {
-                margin-right: 20px; /* Space from menu */
+                margin-right: 20px;
             }
             .main-nav .nav-links {
-                flex-grow: 1; /* Allow menu to take space */
-                display: flex !important; /* Ensure it's flex on desktop, override mobile default */
+                flex-grow: 1;
+                display: flex !important;
             }
             .hamburger-menu {
-                display: none !important; /* Hide hamburger on desktop, override mobile default */
+                display: none !important;
             }
         }
 
         .main-nav .nav-brand {
             display: flex;
             align-items: center;
-            flex-shrink: 0; /* Prevent shrinking on smaller screens */
+            flex-shrink: 0;
         }
 
         .main-nav .nav-brand .nav-logo-link img {
-            max-width: 300px; /* Logo na desktopie zmniejszone dla lepszego dopasowania */
+            max-width: 300px;
             height: auto;
-            border-radius: 8px; /* Maintain rounded corners */
+            border-radius: 8px;
         }
 
         .main-nav .nav-links {
-            display: none; /* Hidden by default on mobile, shown by JS when active */
+            display: none;
             list-style: none;
-            margin: 0; /* Reset margin */
+            margin: 0;
             padding: 0;
-            flex-grow: 1; /* Allow menu to take space */
-            justify-content: center; /* Wyśrodkuj elementy li wewnątrz nav-links */
-            white-space: nowrap; /* Prevent text wrapping on desktop */
+            flex-grow: 1;
+            justify-content: center;
+            white-space: nowrap;
         }
 
         .main-nav .nav-links li {
-            margin: 0 10px; /* Odstęp między elementami menu */
+            margin: 0 10px;
         }
 
         .main-nav .nav-links a {
-            color: #34495e; /* Darker blue/grey for links */
+            color: #34495e;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1em;
@@ -119,14 +119,14 @@
             transition: color 0.3s ease;
         }
 
-        .main-nav .nav-links a::after { /* Underline effect */
+        .main-nav .nav-links a::after {
             content: '';
             position: absolute;
             width: 0%;
             height: 2px;
             bottom: -5px;
-            left: 0; /* Zaczyna się od początku */
-            background-color: #28a745; /* Changed to green */
+            left: 0;
+            background-color: #28a745;
             transition: width 0.3s ease-out;
         }
 
@@ -136,23 +136,23 @@
 
         /* Hamburger Menu - visible on mobile */
         .hamburger-menu {
-            display: flex; /* Always flex (visible) on mobile */
-            flex-direction: row; /* Kreski i tekst w jednej linii */
-            justify-content: flex-start; /* Ułóż elementy od lewej */
-            align-items: center; /* Wyśrodkuj pionowo */
-            width: auto; /* Szerokość dopasowana do zawartości */
-            height: 25px; /* Wysokość dla kresek */
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            width: auto;
+            height: 25px;
             background: transparent;
             border: none;
             cursor: pointer;
             padding: 0;
-            z-index: 1001; /* Above nav links when active */
-            flex-shrink: 0; /* Prevent shrinking */
-            margin-left: 20px; /* Space from logo on mobile default */
+            z-index: 1001;
+            flex-shrink: 0;
+            margin-left: 20px;
         }
 
         .hamburger-menu .bar {
-            width: 30px; /* Długość kresek */
+            width: 30px;
             height: 3px;
             background-color: #34495e;
             border-radius: 10px;
@@ -163,7 +163,7 @@
             font-size: 1.1em;
             font-weight: 600;
             white-space: nowrap;
-            margin-left: 8px; /* Odstęp między kreskami a tekstem */
+            margin-left: 8px;
         }
         /* Animacja hamburgera */
         .hamburger-menu.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -174,14 +174,14 @@
         /* Hero Section (the large image that fades) */
         #hero-section {
             height: 100vh;
-            min-height: 100vh; /* Ensure it always takes full viewport height */
-            background-image: url('wizytowka.png'); /* Używa obrazu wizytówki w sekcji hero */
+            min-height: 100vh;
+            background-image: url('wizytowka.png');
             background-size: cover;
             background-position: center;
-            position: relative; /* Allows z-index for content above it */
-            z-index: 0; /* Below fixed elements, above global background */
-            opacity: 1; /* Initial opacity, controlled by JS */
-            transition: opacity 0.3s ease-out; /* Smooth transition for fading */
+            position: relative;
+            z-index: 0;
+            opacity: 1;
+            transition: opacity 0.3s ease-out;
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -189,69 +189,67 @@
             text-align: center;
             color: white;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            padding-bottom: 100px; /* Default for desktop */
-            padding-top: 90px; /* Minimal padding-top, content is pushed down by flex-end (for fixed nav) */
+            padding-bottom: 100px;
+            padding-top: 90px;
         }
 
-        /* Usunięto h1 z sekcji hero */
-
-        #hero-section .hero-subtitle-box { /* White rectangle for subtitle */
-            background-color: rgba(255, 255, 255, 0.85); /* White with some transparency */
+        #hero-section .hero-subtitle-box {
+            background-color: rgba(255, 255, 255, 0.85);
             padding: 15px 30px;
             border-radius: 10px;
-            margin-top: 0; /* Controlled by flexbox */
-            margin-bottom: 30px; /* Space between box and button */
-            max-width: 80%; /* Limit width */
-            width: fit-content; /* Adjust to content */
+            margin-top: 0;
+            margin-bottom: 30px;
+            max-width: 80%;
+            width: fit-content;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(2px); /* Optional: adds a slight blur effect */
-            display: inline-block; /* To contain content and allow max-width */
+            backdrop-filter: blur(2px);
+            display: inline-block;
         }
 
         #hero-section .hero-subtitle-box p {
-            color: #333; /* Darker text inside the white box */
-            font-size: 1.2em; /* Adjusted font size for clarity */
-            margin: 0; /* Remove default paragraph margin */
+            color: #333;
+            font-size: 1.2em;
+            margin: 0;
         }
 
-        /* Action Button - General Styles (re-organized for clarity and priority) */
+        /* Action Button - General Styles */
         .action-button {
             display: inline-block;
-            background-color: #28a745; /* Changed to green */
-            color: #ffffff !important; /* Ensure white text */
+            background-color: #28a745;
+            color: #ffffff !important;
             padding: 18px 40px;
             font-size: 1.5em;
-            text-decoration: none !important; /* No underline by default and important to override */
+            text-decoration: none !important;
             border-radius: 50px;
             margin-top: 30px;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             text-transform: uppercase;
             font-weight: 700;
-            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3); /* Green shadow */
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
         }
 
         .action-button:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #218838;
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4); /* Darker green shadow */
-            text-decoration: none !important; /* No underline on hover and important to override */
-            color: #ffffff !important; /* Ensure white text on hover */
+            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4);
+            text-decoration: none !important;
+            color: #ffffff !important;
         }
         /* Specific styles for the hero section's action button (green) */
         #hero-section .action-button {
-            background-color: #28a745 !important; /* Zmieniono na zielony, z !important */
-            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3) !important; /* Zmieniono na zielony cień, z !important */
-            margin-top: 0; /* Adjusted margin, controlled by hero-subtitle-box */
+            background-color: #28a745 !important;
+            box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3) !important;
+            margin-top: 0;
         }
 
         #hero-section .action-button:hover {
-            background-color: #218838 !important; /* Ciemniejszy zielony na hover, z !important */
-            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4) !important; /* Zmieniono na zielony cień, z !important */
+            background-color: #218838 !important;
+            box-shadow: 0 8px 16px rgba(40, 167, 69, 0.4) !important;
         }
 
         /* Force removal of ::after pseudo-element for all action buttons */
         .action-button::after {
-            content: none !important; /* This is the key to remove the blue line */
+            content: none !important;
             width: 0 !important;
             height: 0 !important;
             padding: 0 !important;
@@ -260,19 +258,19 @@
 
         /* Scroll Down Arrow */
         .scroll-down-arrow {
-            display: inline-block; /* Domyślnie widoczna na desktopie */
-            margin-top: 50px; /* Space from the button */
-            font-size: 3em; /* Large arrow */
-            color: white; /* White color */
+            display: inline-block;
+            margin-top: 50px;
+            font-size: 3em;
+            color: white;
             text-decoration: none;
-            animation: bounce 2s infinite; /* Animation for bouncing */
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Shadow for readability */
-            transition: transform 0.2s ease, color 0.3s ease; /* Dodano przejście dla koloru */
+            animation: bounce 2s infinite;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            transition: transform 0.2s ease, color 0.3s ease;
         }
         .scroll-down-arrow:hover {
-            transform: translateY(5px); /* Slightly move down on hover */
-            text-decoration: none; /* No underline on hover */
-            color: #28a745; /* Zmieniono na zielony po najechaniu */
+            transform: translateY(5px);
+            text-decoration: none;
+            color: #28a745;
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
@@ -290,17 +288,17 @@
         /* Main Content Container */
         .container {
             max-width: 1000px;
-            margin: 30px auto; /* More margin to lift it from edges */
+            margin: 30px auto;
             padding: 30px;
-            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for content readability */
-            border-radius: 12px; /* Slightly more rounded */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Softer, subtle shadow */
-            overflow: hidden; /* Ensures content stays within rounded corners */
-            position: relative; /* Ensure it's above the background */
-            z-index: 1; /* Make sure content is above hero section after fade */
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Header (now inside container) styles - keep as is, it's not the hero section anymore */
+        /* Header styles */
         header {
             text-align: center;
             padding: 50px 20px;
@@ -309,16 +307,16 @@
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
         }
-        header h1 { /* Specific for header inside container */
+        header h1 {
             font-family: 'Montserrat', sans-serif;
             color: #2c3e50;
-            font-size: 2.5em; /* Smaller than hero H1 */
+            font-size: 2.5em;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 700;
         }
-        header p { /* Specific for header inside container */
+        header p {
             color: #555555;
             font-size: 1.2em;
             margin-top: 10px;
@@ -399,12 +397,12 @@
 
         /* Links (General) */
         a {
-            color: #28a745; /* Changed to green */
+            color: #28a745;
             text-decoration: none;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #218838; /* Darker green on hover */
+            color: #218838;
             text-decoration: underline;
         }
 
@@ -465,7 +463,7 @@
         .hidden-section {
             opacity: 0;
             transform: translateY(60px);
-            transition: opacity 1s ease-out, transform 1s ease-out; /* Re-add transition to hidden state for smooth disappearance */
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
         .show-section {
             opacity: 1;
@@ -487,15 +485,22 @@
             text-transform: uppercase;
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
             writing-mode: vertical-lr;
             text-orientation: mixed;
             letter-spacing: 2px;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         .contact-arrow:hover {
             background-color: #218838;
             transform: translateY(-50%) translateX(-5px);
+            color: #ffffff;
         }
 
         /* Special Animated Image Section (Call to Action) */
@@ -516,7 +521,7 @@
         }
         #special-image-section h3 {
             font-family: 'Montserrat', sans-serif;
-            color: #28a745; /* Changed to green */
+            color: #28a745;
             font-size: 2.2em;
             margin-bottom: 25px;
             font-weight: 600;
@@ -558,13 +563,13 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
         #location-section h2 {
-            color: #28a745; /* Changed to green */
+            color: #28a745;
             margin-top: 0;
             margin-bottom: 30px;
         }
         #location-section .map-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (for responsive iframe) */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 10px;
@@ -578,7 +583,7 @@
             width: 100%;
             height: 100%;
             border: 0;
-            border-radius: 10px; /* Match container border radius */
+            border-radius: 10px;
         }
         #location-section h3 {
             font-family: 'Montserrat', sans-serif;
@@ -603,20 +608,197 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             font-size: 1.1em;
             color: #555;
-            white-space: nowrap; /* Prevent text wrapping */
-            margin: 0; /* Override default list item margin */
+            white-space: nowrap;
+            margin: 0;
+        }
+
+        /* Mobile Call Button */
+        .mobile-call-button {
+            display: none !important;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: #ffffff !important;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            text-decoration: none !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            line-height: 1;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .mobile-call-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        /* Gallery/Portfolio specific styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .gallery-item-info {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .gallery-item-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            color: #34495e;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .gallery-item-info p {
+            font-size: 0.9em;
+            color: #555555;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        /* Lightbox/Modal styles */
+        .lightbox-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center; /* Center content horizontally within the viewport */
+            align-items: center; /* Center content vertically within the viewport */
+            padding: 20px;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 25px; /* Default desktop padding */
+            max-width: 90%; /* On desktop, limit width */
+            width: auto;
+            height: auto; /* Allow height to adjust */
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            animation: fadeInScale 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the top (start) of the column */
+            /* Removed fixed max-height and overflow from here for desktop, will add in media query */
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            height: auto; /* Allow image to scale naturally */
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .lightbox-content p {
+            font-size: 1em;
+            color: #4a4a4a;
+            line-height: 1.6;
+            text-align: center; /* Center text within the paragraph */
+            margin-bottom: 0;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2.5em;
+            color: #666;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+            color: #333;
+        }
+
+        .lightbox-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 2em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+            user-select: none;
+            z-index: 2001;
+        }
+
+        .lightbox-nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         /* --- Scroll Offset Compensation --- */
-        /* Applied to all sections that can be linked to from the menu */
-        #what-are-cpm-rails,
-        #benefits,
-        #indications,
-        #pricelist,
-        #contact,
-        #special-image-section,
-        #location-section {
-            scroll-margin-top: 90px; /* Adjust for desktop nav height */
+        #uslugi, #dlaczego-my, #realizacje, #cennik, #contact, #special-image-section, #location-section {
+            scroll-margin-top: 90px;
         }
 
 
@@ -625,7 +807,6 @@
             .main-nav {
                 height: 70px;
                 padding: 10px 15px;
-                justify-content: center;
             }
             .main-nav .nav-brand {
                 margin-right: 15px;
@@ -634,9 +815,7 @@
                 max-width: 250px;
             }
             #hero-section {
-                height: 100vh;
-                min-height: 100vh;
-                padding-bottom: 80px; /* Zwiększony padding-bottom dla tabletów */
+                padding-bottom: 80px;
                 padding-top: 70px;
                 background-position: center bottom;
             }
@@ -671,7 +850,6 @@
 
             /* Tablet/Mobile specific navigation - hamburger menu */
             .main-nav .nav-links {
-                display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 70px;
@@ -704,7 +882,35 @@
                 margin-left: 15px;
             }
             .scroll-down-arrow {
-                display: none; /* Ukryj strzałkę na tabletach */
+                display: none;
+            }
+            .contact-arrow {
+                display: none;
+            }
+            .mobile-call-button {
+                display: flex !important;
+                width: 55px;
+                height: 55px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 1.8em;
+            }
+            .lightbox-nav-button {
+                padding: 8px 12px;
+                font-size: 1.5em;
+            }
+            .lightbox-prev {
+                left: 10px;
+            }
+            .lightbox-next {
+                right: 10px;
+            }
+            /* Responsive Adjustments for Lightbox on smaller screens */
+            .lightbox-content {
+                max-width: 95%;
+                padding: 15px; /* Reduce padding on mobile */
+                max-height: 95vh; /* Limit modal content height */
+                overflow-y: auto; /* Allow vertical scrolling within modal */
             }
         }
 
@@ -712,7 +918,6 @@
             .main-nav {
                 height: 60px;
                 padding: 10px 10px;
-                justify-content: center;
             }
             .main-nav .nav-brand {
                 margin-right: 10px;
@@ -721,9 +926,7 @@
                 max-width: 150px;
             }
             #hero-section {
-                height: 100vh;
-                min-height: 100vh;
-                padding-bottom: 80px; /* Zwiększony padding-bottom dla mobile */
+                padding-bottom: 80px;
                 padding-top: 60px;
                 background-position: center bottom;
             }
@@ -748,7 +951,6 @@
                 font-size: 1.3em;
             }
             ul li {
-                padding-left: 0;
                 font-size: 1em;
             }
             .image-placeholder {
@@ -756,12 +958,7 @@
                 margin: 30px auto;
             }
             .contact-arrow {
-                right: -5px;
-                padding: 12px 10px;
-                font-size: 0.9em;
-            }
-            .contact-arrow:hover {
-                transform: translateY(-50%) translateX(-10px);
+                display: none;
             }
             #special-image-section {
                 padding: 40px 20px;
@@ -783,19 +980,18 @@
                 font-size: 1em;
                 padding: 8px 15px;
             }
-            .scroll-down-arrow {
-                display: none; /* Ukryj strzałkę na mobile */
+            .mobile-call-button {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 1.6em;
             }
-
-            /* Adjust scroll anchor for sections on smaller mobile */
-            #what-are-cpm-rails,
-            #benefits,
-            #indications,
-            #pricelist,
-            #contact,
-            #special-image-section,
-            #location-section {
-                scroll-margin-top: 60px;
+            .lightbox-content {
+                padding: 15px;
+            }
+            .lightbox-content p {
+                font-size: 0.9em;
             }
         }
 
@@ -803,7 +999,6 @@
             .main-nav {
                 height: 50px;
                 padding: 8px 8px;
-                justify-content: center;
             }
             .main-nav .nav-brand {
                 margin-right: 8px;
@@ -812,9 +1007,7 @@
                 max-width: 100px;
             }
             #hero-section {
-                height: 100vh;
-                min-height: 100vh;
-                padding-bottom: 80px; /* Zwiększony padding-bottom dla najmniejszych mobile */
+                padding-bottom: 80px;
                 padding-top: 50px;
                 background-position: center bottom;
             }
@@ -847,9 +1040,6 @@
                 height: 180px;
                 margin: 25px auto;
             }
-            .contact-arrow {
-                display: none;
-            }
             #special-image-section {
                 padding: 30px 15px;
                 margin-top: 40px;
@@ -870,17 +1060,34 @@
                 font-size: 0.9em;
                 padding: 6px 12px;
             }
-            .scroll-down-arrow {
-                display: none; /* Ukryj strzałkę na najmniejszych mobile */
+            .mobile-call-button {
+                width: 45px;
+                height: 45px;
+                bottom: 10px;
+                right: 10px;
+                font-size: 1.4em;
+            }
+            .lightbox-content {
+                padding: 10px;
+            }
+            .lightbox-content p {
+                font-size: 0.85em;
+            }
+            .lightbox-close {
+                font-size: 2em;
+            }
+            .lightbox-nav-button {
+                padding: 5px 8px;
+                font-size: 1.2em;
+            }
+            .lightbox-prev {
+                left: 5px;
+            }
+            .lightbox-next {
+                right: 5px;
             }
             /* Adjust scroll anchor for sections on smallest mobile */
-            #what-are-cpm-rails,
-            #benefits,
-            #indications,
-            #pricelist,
-            #contact,
-            #special-image-section,
-            #location-section {
+            #uslugi, #dlaczego-my, #realizacje, #cennik, #contact, #special-image-section, #location-section {
                 scroll-margin-top: 50px;
             }
         }
@@ -898,14 +1105,14 @@
             </a>
         </div>
         <ul class="nav-links">
-            <li><a href="#what-are-cpm-rails">Usługi</a></li>
-            <li><a href="#benefits">Dlaczego My?</a></li>
-            <li><a href="#indications">Realizacje</a></li>
-            <li><a href="#pricelist">Cennik</a></li>
+            <li><a href="#uslugi">Usługi</a></li>
+            <li><a href="#dlaczego-my">Dlaczego My?</a></li>
+            <li><a href="#realizacje">Realizacje</a></li>
+            <li><a href="#cennik">Cennik</a></li>
             <li><a href="#contact">Kontakt</a></li>
-            <li><a href="#location-section">Lokalizacja</a></li> <!-- Zmieniono link -->
+            <li><a href="#location-section">Lokalizacja</a></li>
         </ul>
-        <button class="hamburger-menu">
+        <button class="hamburger-menu" aria-label="Otwórz menu nawigacyjne">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
@@ -915,16 +1122,16 @@
         <div class="hero-subtitle-box"> <p>Profesjonalizm i doświadczenie w układaniu kostki brukowej.</p>
         </div>
         <a href="#contact" class="action-button">Darmowa wycena!</a>
-        <a href="#what-are-cpm-rails" class="scroll-down-arrow">&darr;</a> <!-- Strzałka do przewijania -->
+        <a href="#uslugi" class="scroll-down-arrow" aria-label="Przewiń do sekcji Usługi">&darr;</a> <!-- Strzałka do przewijania -->
     </section>
 
     <div class="container">
         <hr>
 
-        <section id="what-are-cpm-rails" class="hidden-section">
+        <section id="uslugi" class="hidden-section">
             <h2>Nasze Usługi Brukarskie</h2>
             <div class="image-placeholder">
-                <img src="https://placehold.co/700x350/e9ecef/888888?text=[Image of Ukladanie Kostki]" alt="Zdjęcie przedstawiające układanie kostki brukowej">
+                <img src="https://placehold.co/700x350/e9ecef/888888?text=Układanie+Kostki" alt="Zdjęcie przedstawiające układanie kostki brukowej" loading="lazy">
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
             <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -932,10 +1139,10 @@
 
         <hr>
 
-        <section id="benefits" class="hidden-section">
+        <section id="dlaczego-my" class="hidden-section">
             <h2>Dlaczego Wybrać Poz-bruk?</h2>
             <div class="image-placeholder">
-                <img src="https://placehold.co/700x350/e9ecef/888888?text=[Image of Jakosc i Doswiadczenie]" alt="Ilustracja jakości i doświadczenia w brukarstwie">
+                <img src="https://placehold.co/700x350/e9ecef/888888?text=Jakość+i+Doświadczenie" alt="Ilustracja jakości i doświadczenia w brukarstwie" loading="lazy">
             </div>
             <ul>
                 <li><strong>Doświadczenie i Profesjonalizm:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -947,25 +1154,31 @@
 
         <hr>
 
-        <section id="indications" class="hidden-section">
+        <!-- Dynamiczna Galeria/Portfolio -->
+        <section id="realizacje" class="hidden-section">
             <h2>Nasze Realizacje</h2>
-            <div class="image-placeholder">
-                <img src="https://placehold.co/700x350/e9ecef/888888?text=[Image of Gotowe Projekty]" alt="Galeria ukończonych projektów brukarskich">
+            <p>Zapoznaj się z wybranymi projektami, które zrealizowaliśmy z pasją i precyzją. Kliknij na zdjęcie, aby zobaczyć więcej szczegółów!</p>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery items will be dynamically loaded by JavaScript -->
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <ul>
-                <li>Podjazdy z kostki brukowej</li>
-                <li>Tarasy i ścieżki ogrodowe</li>
-                <li>Chodniki i parkingi</li>
-                <li>Elementy małej architektury</li>
-                <li>Renowacja starych nawierzchni</li>
-                <li>Inne niestandardowe projekty</li>
-            </ul>
+
+            <!-- Lightbox Modal -->
+            <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+                <div class="lightbox-content">
+                    <button class="lightbox-close" aria-label="Zamknij galerię">&times;</button>
+                    <img id="lightbox-image" src="" alt="">
+                    <!-- Usunięto tag h3 do wyświetlania tytułu, zgodnie z prośbą -->
+                    <p id="lightbox-description"></p>
+                    <button class="lightbox-nav-button lightbox-prev" aria-label="Poprzedni projekt">&lsaquo;</button>
+                    <button class="lightbox-nav-button lightbox-next" aria-label="Następny projekt">&rsaquo;</button>
+                </div>
+            </div>
         </section>
 
         <hr>
 
-        <section id="pricelist" class="hidden-section">
+        <section id="cennik" class="hidden-section">
             <h2>Przykładowy Cennik Usług</h2>
             <table>
                 <thead>
@@ -1011,7 +1224,7 @@
         <section id="special-image-section" class="hidden-section">
             <h3>Zrealizuj swój projekt z Poz-bruk!</h3>
             <div class="special-image">
-                <img src="https://placehold.co/500x300/e0eafc/999999?text=[Image of Projekt Twoich Marzen]" alt="Wizualizacja nowoczesnego podjazdu z kostki brukowej">
+                <img src="https://placehold.co/500x300/e0eafc/999999?text=Projekt+Twoich+Marzeń" alt="Wizualizacja nowoczesnego podjazdu z kostki brukowej" loading="lazy">
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <a href="#contact" class="action-button">Poproś o wycenę</a>
@@ -1029,7 +1242,6 @@
         </section>
 
         <hr>
-        <!-- Zmieniono sekcję wizualizatora na sekcję mapy -->
         <section id="location-section" class="hidden-section">
             <h2>Nasza Lokalizacja</h2>
             <p>Znajdź nas tutaj i sprawdź, czy dojeżdżamy do Twojej miejscowości!</p>
@@ -1053,42 +1265,38 @@
         </footer>
     </div>
 
-    <a href="#contact" class="contact-arrow">
+    <a href="#contact" class="contact-arrow" aria-label="Skontaktuj się z nami">
         Kontakt
     </a>
 
+    <a href="tel:+48123456789" class="mobile-call-button" aria-label="Zadzwoń do nas">
+        📞
+    </a>
+
     <script>
-        // JavaScript for scroll animation (IntersectionObserver)
         document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.hidden-section'); // Select all sections with the initial hidden class
-
+            // --- General Scroll Animation Logic (IntersectionObserver) ---
+            const sections = document.querySelectorAll('.hidden-section');
             const observerOptions = {
-                root: null, // Use the viewport as the root
-                rootMargin: '0px', // No margin around the root
-                threshold: 0.15 // Trigger when 15% of the element is visible
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
             };
-
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('show-section');
-                    } else {
-                        // If the section is not intersecting, hide it again
-                        entry.target.classList.remove('show-section');
                     }
                 });
             }, observerOptions);
-
-            // Observe each hidden section
             sections.forEach(section => {
                 observer.observe(section);
             });
 
-            // Hero Section Fading Logic
+            // --- Hero Section Fading Logic ---
             const heroSection = document.getElementById('hero-section');
             if (heroSection) {
                 const heroHeight = heroSection.offsetHeight;
-
                 window.addEventListener('scroll', () => {
                     const scrollPosition = window.scrollY;
                     let opacity = 1 - (scrollPosition / (heroHeight * 0.7));
@@ -1101,26 +1309,138 @@
             // --- Hamburger Menu Logic ---
             const hamburgerMenu = document.querySelector('.hamburger-menu');
             const navLinks = document.querySelector('.nav-links');
-
             if (hamburgerMenu) {
                 hamburgerMenu.addEventListener('click', () => {
                     navLinks.classList.toggle('active');
                     hamburgerMenu.classList.toggle('active');
                 });
-
-                // Close menu when a link is clicked (for single-page navigation)
                 navLinks.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
-                        if (navLinks.classList.contains('active')) { // Only close if active
+                        if (navLinks.classList.contains('active')) {
                             navLinks.classList.remove('active');
                             hamburgerMenu.classList.remove('active');
                         }
                     });
                 });
             }
-            // --- End Hamburger Menu Logic ---
 
-            // No need for Project Configurator JS anymore as it's replaced
+            // --- Gallery Lightbox Logic ---
+            const galleryGrid = document.getElementById('gallery-grid');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = lightbox.querySelector('.lightbox-content'); // Get the content div for scrolling
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxDescription = document.getElementById('lightbox-description');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const lightboxPrev = document.querySelector('.lightbox-prev');
+            const lightboxNext = document.querySelector('.lightbox-next');
+
+            let currentImageIndex = 0;
+
+            const galleryData = [
+                {
+                    thumb: "https://placehold.co/700x200/a3ccf1/ffffff?text=Miniatura+Podjazdu",
+                    full: "https://placehold.co/1000x600/a3ccf1/ffffff?text=Projekt+Podjazdu",
+                    title: "Nowoczesny Podjazd",
+                    description: "Realizacja podjazdu z eleganckiej kostki brukowej. Połączenie funkcjonalności z nowoczesnym designem. Projekt wykonany z dbałością o każdy detal, zapewniający trwałość i estetykę na lata."
+                },
+                {
+                    thumb: "https://placehold.co/700x200/f1a3a3/ffffff?text=Miniatura+Tarasy",
+                    full: "https://placehold.co/1000x600/f1a3a3/ffffff?text=Projekt+Tarasy",
+                    title: "Tarasy Ogrodowe",
+                    description: "Stworzenie przestronnych tarasów ogrodowych idealnych do relaksu. Wykorzystano wysokiej jakości kostkę, która harmonijnie współgra z otoczeniem, tworząc spójną całość."
+                },
+                {
+                    thumb: "https://placehold.co/700x200/a3f1b0/ffffff?text=Miniatura+Ścieżki",
+                    full: "https://placehold.co/1000x600/a3f1b0/ffffff?text=Projekt+Ścieżki",
+                    title: "Malownicza Ścieżka",
+                    description: "Projekt i wykonanie krętej ścieżki w ogrodzie, prowadzącej przez zielone zakątki. Zapewnia komfort użytkowania i dodaje uroku krajobrazowi. Idealne rozwiązanie do ogrodu."
+                },
+                {
+                    thumb: "https://placehold.co/700x200/e6a3f1/ffffff?text=Miniatura+Parking",
+                    full: "https://placehold.co/1000x600/e6a3f1/ffffff?text=Projekt+Parking",
+                    title: "Parking Firmowy",
+                    description: "Kompleksowe wykonanie parkingu z kostki brukowej dla firmy. Zapewnia trwałą i estetyczną nawierzchnię, odporną na intensywne użytkowanie. Projekt dostosowany do potrzeb klienta."
+                },
+                {
+                    thumb: "https://placehold.co/700x200/f1e6a3/ffffff?text=Miniatura+Schody",
+                    full: "https://placehold.co/1000x600/f1e6a3/ffffff?text=Projekt+Schody",
+                    title: "Schody z Kostki",
+                    description: "Realizacja eleganckich schodów prowadzących do wejścia budynku. Połączenie różnych rodzajów kostki stworzyło unikalny wzór, który podkreśla charakter nieruchomości."
+                },
+                {
+                    thumb: "https://placehold.co/700x200/a3f1e6/ffffff?text=Miniatura+Renowacja",
+                    full: "https://placehold.co/1000x600/a3f1e6/ffffff?text=Projekt+Renowacja",
+                    title: "Renowacja Nawierzchni",
+                    description: "Kompleksowa renowacja starej, zniszczonej nawierzchni brukowej. Przywróciliśmy jej pierwotny blask i funkcjonalność, wykorzystując nowoczesne techniki czyszczenia i uzupełniania ubytków."
+                }
+            ];
+
+            // Dynamically create gallery items
+            galleryData.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.classList.add('gallery-item');
+                galleryItem.dataset.index = index;
+
+                galleryItem.innerHTML = `
+                    <img src="${item.thumb}" alt="Miniatura: ${item.title}" loading="lazy">
+                    <div class="gallery-item-info">
+                        <h3>${item.title}</h3>
+                        <p>${item.description.substring(0, 50)}...</p>
+                    </div>
+                `;
+                galleryGrid.appendChild(galleryItem);
+
+                galleryItem.addEventListener('click', () => {
+                    currentImageIndex = parseInt(galleryItem.dataset.index);
+                    showLightboxImage(currentImageIndex);
+                });
+            });
+
+            function showLightboxImage(index) {
+                const item = galleryData[index];
+                if (!item) return;
+
+                lightboxImage.src = item.full;
+                lightboxImage.alt = item.title;
+                lightboxDescription.textContent = item.description;
+                lightbox.style.display = 'flex';
+                // Ensure scroll position is at the top when the lightbox opens
+                lightboxContent.scrollTop = 0;
+            }
+
+            lightboxClose.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    lightbox.style.display = 'none';
+                } else if (e.key === 'ArrowLeft' && lightbox.style.display === 'flex') {
+                    showPreviousImage();
+                } else if (e.key === 'ArrowRight' && lightbox.style.display === 'flex') {
+                    showNextImage();
+                }
+            });
+
+            lightboxPrev.addEventListener('click', showPreviousImage);
+            lightboxNext.addEventListener('click', showNextImage);
+
+            function showPreviousImage() {
+                currentImageIndex = (currentImageIndex - 1 + galleryData.length) % galleryData.length;
+                showLightboxImage(currentImageIndex);
+            }
+
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % galleryData.length;
+                showLightboxImage(currentImageIndex);
+            }
+            // --- End Gallery Lightbox Logic ---
         });
     </script>
 
